@@ -1,0 +1,39 @@
+{
+  "name": "contractor-connection",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "~6.26.0",
+    "babel-jest": "~23.4.2",
+    "babel-loader": "~7.1.5",
+    "babel-polyfill": "~6.26.0",
+    "babel-preset-env": "~1.7.0",
+    "dotenv-webpack": "~1.5.7",
+    "eslint": "~5.4.0",
+    "immutable": "~3.8.2",
+    "jest-cli": "~23.5.0",
+    "raf": "~3.4.0",
+    "superagent": "~3.8.3",
+    "webpack": "~4.16.5",
+    "webpack-cli": "~3.1.0",
+    "webpack-serve": "~2.0.2"
+  },
+  "scripts": {
+    "lint": "eslint src .js --fix",
+    "dev": "webpack-serve --content public",
+    "webpack": "webpack",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Goeckner/ContractorConnection.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Goeckner/ContractorConnection/issues"
+  },
+  "homepage": "https://github.com/Goeckner/ContractorConnection#readme"
+}
