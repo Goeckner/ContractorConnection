@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack')
 module.exports = {
   mode: 'development',
 
-  entry: `${path.join(__dirname, 'src')}/main.js`,
+  entry: `${path.join(__dirname, 'src')}/main.jsx`,
 
   module: {
     rules: [
