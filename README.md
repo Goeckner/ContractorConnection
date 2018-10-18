@@ -8,3 +8,5 @@ Scripts:
 npm run dev - starts the project
 npm run test - runs tests
 npm run lint - runs the linter (formatting rules)
+
+The app runs at http://localhost:8080
