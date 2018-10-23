@@ -4,7 +4,7 @@ const Dotenv = require('dotenv-webpack')
 module.exports = {
   mode: 'development',
 
-  entry: `${path.join(__dirname, 'src')}/main.jsx`,
+  entry: [ 'babel-polyfill', './src/main.jsx' ],
 
   module: {
     rules: [
@@ -19,6 +19,7 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.join(__dirname, 'public'),
+    publicPath: '/contractor-connection',
   },
 
   plugins: [ new Dotenv() ],
