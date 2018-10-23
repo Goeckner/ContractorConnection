@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "\033[1;34m➡ Cleaning up your remote refs...\033[0m"
+git remote prune origin
+git gc --prune=now

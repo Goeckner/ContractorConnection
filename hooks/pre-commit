@@ -1,0 +1,67 @@
+#!/bin/sh
+
+STASH_NAME="pre-commit-$(date "+%Y-%m-%d@%H:%M:%S")"
+
+print_intro() {
+    user=$(git config --get user.name)
+    echo "\033[1;34m➡ Time to pay the troll toll, $user...\033[0m"
+
+    test_for_js_linter
+}
+
+test_for_js_linter() {
+    if [ -x node_modules/.bin/eslint ]; then
+        test_for_css_linter
+    else
+        echo "\033[1;31m✘ You do not have eslint installed!\033[0m"
+        echo ""
+        echo "\033[1;30m Run \033[1;34m\"npm i\"\033[0m\033[1;30m to install the linter.\033[0m"
+        exit 1
+    fi
+}
+
+test_for_css_linter() {
+    if [ -x node_modules/.bin/stylelint ]; then
+        stash_unstaged
+    else
+        echo "\033[1;31m✘ You do not have stylelint installed!\033[0m"
+        echo ""
+        echo "\033[1;30m Run \033[1;34m\"npm i\"\033[0m\033[1;30m to install the linter.\033[0m"
+        exit 1
+    fi
+}
+
+stash_unstaged() {
+    echo "\033[1;30m➡ Stashing unstaged changes as $STASH_NAME...\033[0m"
+    git stash save --quiet --keep-index --include-untracked "$STASH_NAME"
+    run_js_linter
+}
+
+run_js_linter() {
+    if node node_modules/.bin/eslint --fix --ext .js,.jsx src test --cache; then
+        echo "\033[1;32m✔︎ Eslint checks out! Now onto the CSS...\033[0m"
+        run_css_linter
+    else
+        echo "\033[1;31m✘ Your JS is trash! Maybe go write some Python...\033[0m"
+        pop_unstaged
+        exit 1
+    fi
+}
+
+run_css_linter() {
+    if node node_modules/.bin/stylelint "src/client/styles/**/*.css" --fix --color --allow-empty-input --cache; then
+        echo "\033[1;32m✔︎ CSS checks out! Pod bay doors opening...\033[0m"
+        pop_unstaged
+        exit 0
+    else
+        echo "\033[1;31m✘ Your CSS is trash! The browser is upset with you...\033[0m"
+        pop_unstaged
+        exit 1
+    fi
+}
+
+pop_unstaged() {
+    git reset --hard --quiet && git stash pop --index --quiet
+}
+
+print_intro
