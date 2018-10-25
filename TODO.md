@@ -1,2 +1,0 @@
-- add velocity navbar
-- add <Loading /> component
