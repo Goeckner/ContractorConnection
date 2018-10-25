@@ -1,15 +1,13 @@
-import { connect } from 'react-redux'
-import { simpleAction } from '../redux/actions/simpleAction'
 import React from 'react'
+import { connect } from 'react-redux'
 import logo from '../logo.svg'
 
-const HomeContainer = props => (
+const InstructorsContainer = props => (
   <div className="App">
     <header className="App-header">
       <img alt="logo" className="App-logo" src={logo} />
-      <h1 className="App-title">Welcome to Contractor Connection</h1>
+      <h1 className="App-title">This is the Instructor List</h1>
     </header>
-    <button onClick={props.simpleAction}>Test redux action</button>
   </div>
 )
 
@@ -18,9 +16,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction()),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
 
-export default withConnect(HomeContainer)
+export default withConnect(InstructorsContainer)
