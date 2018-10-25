@@ -9,7 +9,12 @@ const HomeContainer = props => (
       <img alt="logo" className="App-logo" src={logo} />
       <h1 className="App-title">Welcome to Contractor Connection</h1>
     </header>
-    <button onClick={props.simpleAction}>Test redux action</button>
+    <button onClick={props.simpleAction}>
+      Test redux action
+    </button>
+    <div>
+      {props.simpleReducer}
+    </div>
   </div>
 )
 
