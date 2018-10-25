@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
+import { Route, Switch } from "react-router-dom"
 import { connect } from 'react-redux'
-import HomeContainer from './containers/HomeContainer'
-import './App.css';
+import HomeContainer from './HomeContainer'
+import '../App.css';
 
 class App extends Component {
  render() {
   return (
-    <HomeContainer></HomeContainer>
+      <Switch>
+        <Route path="/" exact component={HomeContainer} />
+      </Switch>
   );
  }
 }
