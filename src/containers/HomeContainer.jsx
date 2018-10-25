@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from '../logo.svg';
 import { connect } from 'react-redux';
-import { simpleAction } from '../actions/simpleAction'
+import { simpleAction } from '../redux/actions/simpleAction'
 
 const HomeContainer = props => (
   <div className="App">
