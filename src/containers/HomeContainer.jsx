@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { simpleAction } from '../redux/actions/simpleAction'
 import React from 'react'
 import logo from '../logo.svg'
+import { Panel } from 'react-bootstrap'
 
 const HomeContainer = ({
   simpleReducer,
@@ -12,12 +13,16 @@ const HomeContainer = ({
         <img alt="logo" className="App-logo" src={logo} />
         <h1 className="App-title">Welcome to Contractor Connection</h1>
       </header>
-      <button onClick={simpleAction}>
-        Test redux action
-      </button>
-      <div>
-        {simpleReducer}
-      </div>
+      <Panel>
+        <Panel.Heading>
+          <button onClick={simpleAction}>
+            Test redux action
+          </button>
+        </Panel.Heading>
+        <Panel.Body>
+          {simpleReducer}
+        </Panel.Body>
+      </Panel>
     </div>
 )
 
