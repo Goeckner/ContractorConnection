@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import InstructorSummary from './Instructor-SummaryComponent'
 
-const InstructorsList = props => (
-    <div className = "instructors-list">
+const InstructorsList = props => 
+{
+    const instructorCell = props.instructors.map((instructor) =>
+    {
+        return (
+            <InstructorSummary
+                instructor = {instructor}
+            />
+        )
+    })
 
-    </div>
-)
+    return (
+        <div className = "instructors-list">
+            <ul>
+                {instructorCell}
+            </ul>
+        </div>
+    )
+}
 
 const mapStateToProps = state => ({
     ...state,
