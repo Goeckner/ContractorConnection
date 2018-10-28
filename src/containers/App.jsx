@@ -4,7 +4,7 @@ import { Panel } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { setActivePage } from '../redux/actions/rootActions'
 import HomeContainer from './HomeContainer'
-import InstructorsContainer from './InstructorsContainer'
+import SearchContainer from './SearchContainer'
 import React, { Component } from 'react'
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
         </Panel>
         <Switch>
           <Route component={HomeContainer} exact path="/" />
-          <Route component={InstructorsContainer} exact path="/instructors" />
+          <Route component={SearchContainer} exact path="/instructors" />
         </Switch>
       </div>
     )
