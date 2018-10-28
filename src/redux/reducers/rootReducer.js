@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import simpleReducer from './simpleReducer'
+import activePage from './activePageReducer'
 
 export default combineReducers({
-  simpleReducer,
+  activePage,
 })

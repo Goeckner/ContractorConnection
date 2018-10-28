@@ -1,13 +1,10 @@
 import { connect } from 'react-redux'
-import { simpleAction } from '../redux/actions/simpleAction'
+import { setActivePage } from '../redux/actions/rootActions'
 import React from 'react'
 import logo from '../logo.svg'
 import { Panel } from 'react-bootstrap'
 
-const HomeContainer = ({
-  simpleReducer,
-  simpleAction,
-  }) => (
+const HomeContainer = props => (
     <div className="App">
       <header className="App-header">
         <img alt="logo" className="App-logo" src={logo} />
@@ -15,12 +12,15 @@ const HomeContainer = ({
       </header>
       <Panel>
         <Panel.Heading>
-          <button onClick={simpleAction}>
-            Test redux action
+          <button onClick={() => props.setActivePage('instructors')}>
+            Instructor Page
+          </button>
+          <button onClick={() => props.setActivePage('home')}>
+            Home Page
           </button>
         </Panel.Heading>
         <Panel.Body>
-          {simpleReducer}
+          {props.activePage}
         </Panel.Body>
       </Panel>
     </div>
@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction()),
+  setActivePage: page => dispatch(setActivePage(page)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
