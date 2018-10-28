@@ -2,10 +2,9 @@
   "name": "contractor-connection",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "connected-react-router": "~4.5.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "connected-react-router": "~4.5.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
