@@ -5,3 +5,8 @@
 .navItem {
   color: white
 }
+
+.navItem:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

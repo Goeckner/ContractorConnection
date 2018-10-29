@@ -8,9 +8,11 @@ const Header = props => (
   <header>
     <Navbar className="row headerContainer">
       <Navbar.Header>
-        <Navbar.Brand className="navItem">
+        <Navbar.Brand>
           <Link to="/">
+            <div className="navItem">
               Home
+            </div>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
@@ -19,7 +21,9 @@ const Header = props => (
         <Nav>
           <Navbar.Brand>
             <Link to="/instructors">
-              Instructor Page
+              <div className="navItem">
+                Instructors
+              </div>
             </Link>
           </Navbar.Brand>
         </Nav>
