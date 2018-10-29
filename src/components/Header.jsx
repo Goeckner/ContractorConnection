@@ -6,9 +6,9 @@ import React from 'react'
 
 const Header = props => (
   <header>
-    <Navbar className="row">
+    <Navbar className="row headerContainer">
       <Navbar.Header>
-        <Navbar.Brand>
+        <Navbar.Brand className="navItem">
           <Link to="/">
               Home
           </Link>

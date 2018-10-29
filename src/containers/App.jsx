@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.css'
+import '../styles/appStyles.css'
 import '../App.css'
 import { ConnectedRouter } from 'connected-react-router'
 import { Route, Switch } from 'react-router-dom'
