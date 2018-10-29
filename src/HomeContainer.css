@@ -1,0 +1,14 @@
+.App {
+    min-height: 100vh;
+    background-image: url("./diversity_hands.jpg");
+    font-size: calc(5px + 2vmin);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.Home-intro {
+    background:rgba(227, 232, 233, 0.5);
+    display: inline-block;
+    width: 35%;
+    padding: 5px;
+    border-radius: 25px;
+}
