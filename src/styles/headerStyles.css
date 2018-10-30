@@ -10,3 +10,8 @@
   cursor: pointer;
   text-decoration: underline;
 }
+
+.loginForm {
+  width: 30%;
+  margin: auto;
+}
