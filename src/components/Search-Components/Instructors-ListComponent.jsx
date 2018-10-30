@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Table, tbody } from 'react-bootstrap'
 import InstructorSummary from './Instructor-SummaryComponent'
 
 const InstructorsList = props => 
@@ -14,11 +15,11 @@ const InstructorsList = props =>
     })
 
     return (
-        <div className = "instructors-list">
-            <ul>
+        <Table hover className = "instructors-list">
+            <tbody>
                 {instructorCell}
-            </ul>
-        </div>
+            </tbody>
+        </Table>
     )
 }
 

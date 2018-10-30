@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 const InstructorSummary = props =>
 {
     return (
-        <li>
-            {props.instructor.name}
-        </li>
+        <tr>
+            <td>
+                <strong>
+                    {props.instructor.name}
+                </strong><br/>
+                <span>
+                    {props.instructor.email}
+                </span>
+            </td>
+        </tr>
     )
 }
 
