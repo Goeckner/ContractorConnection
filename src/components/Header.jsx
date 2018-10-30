@@ -9,7 +9,7 @@ const Header = props => (
     <Navbar className="row headerContainer">
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">
+         <Link to="/">
             <div className="navItem">
               Home
             </div>
@@ -26,6 +26,22 @@ const Header = props => (
               </div>
             </Link>
           </Navbar.Brand>
+        </Nav>
+        <Nav pullRight>
+          <NavItem>
+            <Link to="/login">
+              <div className="navItem">
+                Login
+              </div>
+            </Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/sign-up">
+              <div className="navItem">
+                Sign Up
+              </div>
+            </Link>
+          </NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

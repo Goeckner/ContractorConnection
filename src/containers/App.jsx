@@ -7,6 +7,8 @@ import { connect } from 'react-redux'
 import Header from '../components/Header'
 import HomeContainer from './HomeContainer'
 import SearchContainer from './SearchContainer'
+import LoginContainer from './Login'
+import SignUpContainer from './SignUp'
 import React, { Component } from 'react'
 
 class App extends Component {
@@ -19,6 +21,8 @@ class App extends Component {
             <Switch>
               <Route component={HomeContainer} exact path="/" />
               <Route component={SearchContainer} exact path="/instructors" />
+              <Route component={LoginContainer} exact path="/login" />
+              <Route component={SignUpContainer} exact path="/sign-up" />
             </Switch>
           </div>
         </ConnectedRouter>
