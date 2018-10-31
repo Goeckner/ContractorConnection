@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Table, tbody } from 'react-bootstrap'
 import InstructorSummary from './Instructor-SummaryComponent'
 
-const InstructorsList = props => 
+const InstructorsList = props =>
 {
     const instructorCell = props.instructors.map((instructor) =>
     {
@@ -26,7 +26,7 @@ const InstructorsList = props =>
 const mapStateToProps = state => ({
     ...state,
 })
-  
+
 const mapDispatchToProps = dispatch => ({
 })
 

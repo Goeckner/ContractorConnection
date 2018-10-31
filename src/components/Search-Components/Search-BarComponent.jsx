@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 
 const SearchBar = props => (
@@ -12,7 +12,7 @@ const SearchBar = props => (
 const mapStateToProps = state => ({
     ...state,
 })
-  
+
 const mapDispatchToProps = dispatch => ({
 })
 

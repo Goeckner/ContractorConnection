@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
 const InstructorSummary = props =>
@@ -20,7 +20,7 @@ const InstructorSummary = props =>
 const mapStateToProps = state => ({
     ...state,
 })
-  
+
 const mapDispatchToProps = dispatch => ({
 })
 

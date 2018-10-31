@@ -1,4 +1,4 @@
-import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { setActivePage } from '../redux/actions/rootActions'
 import { Link } from 'react-router-dom'
@@ -28,20 +28,20 @@ const Header = props => (
           </Navbar.Brand>
         </Nav>
         <Nav pullRight>
-          <NavItem>
+          <Navbar.Brand>
             <Link to="/login">
               <div className="navItem">
                 Login
               </div>
             </Link>
-          </NavItem>
-          <NavItem>
+          </Navbar.Brand>
+          <Navbar.Brand>
             <Link to="/sign-up">
               <div className="navItem">
                 Sign Up
               </div>
             </Link>
-          </NavItem>
+          </Navbar.Brand>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

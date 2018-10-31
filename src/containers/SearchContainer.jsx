@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid,Clearfix,Col,Row } from 'react-bootstrap';
+import { Grid,Col,Row } from 'react-bootstrap';
 import SearchBar from '../components/Search-Components/Search-BarComponent'//Search-BarComponent from '../components/Search-Components/Search-BarComponent'
 import InstructorsList from '../components/Search-Components/Instructors-ListComponent'
 
@@ -21,7 +21,7 @@ const SearchContainer = props => (
 			</Col >
 
 		</Row >
-		
+
 	</Grid >
 )
 
