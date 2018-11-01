@@ -3,6 +3,15 @@ import { connect } from 'react-redux'
 import { Grid,Col,Row } from 'react-bootstrap';
 import SearchBar from '../components/Search-Components/Search-BarComponent'//Search-BarComponent from '../components/Search-Components/Search-BarComponent'
 import InstructorsList from '../components/Search-Components/Instructors-ListComponent'
+import MapContainer from '../components/Search-Components/MapContainer';
+
+const defaultProps = {
+    center: {
+      lat: 59.95,
+      lng: 30.33
+    },
+    zoom: 11
+  }
 
 const SearchContainer = props => (
 	<Grid className="instructor-search-container" >
@@ -18,6 +27,10 @@ const SearchContainer = props => (
 			</Col >
 
 			<Col className="results-map-container" >
+				<MapContainer 
+					center = {defaultProps.center}
+					zoom = {defaultProps.zoom}
+				/>
 			</Col >
 
 		</Row >
