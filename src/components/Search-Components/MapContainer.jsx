@@ -4,7 +4,6 @@ import GoogleMapReact from 'google-map-react'
 
 const MapComponent = props => 
 {
-
     return (
         <div>
             <div style= {{height: '55vh', width: '100%'}}>

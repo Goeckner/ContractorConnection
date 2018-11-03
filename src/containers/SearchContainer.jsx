@@ -4,14 +4,30 @@ import { Grid,Col,Row } from 'react-bootstrap';
 import SearchBar from '../components/Search-Components/Search-BarComponent'//Search-BarComponent from '../components/Search-Components/Search-BarComponent'
 import InstructorsList from '../components/Search-Components/Instructors-ListComponent'
 import MapContainer from '../components/Search-Components/MapContainer';
+import Geocode from "react-geocode";
 
-const defaultProps = {
+var defaultProps = {
     center: {
-      lat: 59.95,
-      lng: 30.33
+      lat: 41.850033,
+      lng: -96.6500523
     },
-    zoom: 11
+    zoom: 3
   }
+
+Geocode.setApiKey("AIzaSyBd0Bc-Mmak6eijlIANsD4iQCTRQp5J-N8");
+
+Geocode.enableDebug();
+
+Geocode.fromAddress("Eiffel Tower").then(
+	response => {
+		const { lat, lng } = response.results[0].geometry.location;
+		defaultProps.center = {lat, lng}
+		console.log(lat, lng);
+	},
+	error => {
+		console.error(error);
+	}
+);
 
 const SearchContainer = props => (
 	<Grid className="instructor-search-container" >
