@@ -84,8 +84,21 @@ const SignUpContainer = props => (
     <FormGroup>
       <ControlLabel>Are you an instructor?</ControlLabel>
       <div>
-        <Radio name="radioGroup" inline onClick={() => props.setIsInstructor(true)}>Yes</Radio>
-        <Radio name="radioGroup" inline onClick={() => props.setIsInstructor(false)}>No</Radio>
+        <Radio
+          name="radioGroup"
+          inline onClick={() => props.setIsInstructor(true)}
+        >
+          Yes
+        </Radio>
+        <Radio
+          name="radioGroup"
+          inline onClick={() => {
+            props.setIsInstructor(false)
+            props.setClassList([])
+          }}
+        >
+          No
+        </Radio>
       </div>
     </FormGroup>
 
