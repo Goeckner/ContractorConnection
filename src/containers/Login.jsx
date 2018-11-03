@@ -7,10 +7,10 @@ const LoginContainer = props => (
 	<Form horizontal className="loginForm">
     <FormGroup controlId="formHorizontalEmail">
       <Col componentClass={ControlLabel} sm={2}>
-        Email
+        Username
       </Col>
       <Col sm={10}>
-        <FormControl type="email" placeholder="Email" />
+        <FormControl type="text" placeholder="Username" />
       </Col>
     </FormGroup>
 
