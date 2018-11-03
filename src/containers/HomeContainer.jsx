@@ -1,20 +1,27 @@
-import '../HomeContainer.css'
+import '../styles/HomeContainer.css'
 import { connect } from 'react-redux'
+import { Carousel } from 'react-bootstrap'
 import React from 'react'
 
 const HomeContainer = props => (
     <div className="App">
-      <header className="App-header">
-        <h1 className="App-title">Welcome to Contractor Connection!</h1>
-      </header>
-        <div className="Home-intro">
-          <p className="intro_content">Contractor Connection is where diverse individuals can find firearm classes by instructors who have completed diversity training.
-                         We want you to feel as comfortable as possible in your self-defense journey!</p>
-        </div>
-        <div className="Home-intro">
-          <p className="intro_content">We also provide a platform for firearm instructors to find new and excited clients who are interested to learn from them.
-                         We provide diversity training and, once completed, you or your company will begin to be displayed in the instructor search results!</p>
-        </div>
+      <header className="App-header">Firearm-Inclusion-Training</header>
+      <div className="Carousel">
+        <Carousel>
+          <Carousel.Item>
+            <img width={900} height={500} alt="900x500" src={require('../diversity_hands.jpg')} />
+            <Carousel.Caption>
+              <h3>Firearms Training</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <img width={900} height={500} alt="900x500" src={require('../diversity_hands.jpg')} />
+            <Carousel.Caption>
+              <h3>Inclusion and Diversity</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+        </Carousel>
+      </div>
     </div>
 )
 

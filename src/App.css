@@ -1,15 +1,13 @@
 .App {
   text-align: center;
 }
-
-.App-logo {
+/*.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
-}
-
+}*/
 .App-header {
   /* background-color: whitesmoke; */
-  /* min-height: 100vh; */ 
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,7 +16,7 @@
   color: black;
 }
 
-.App-link {
+/*.App-link {
   color: #61dafb;
 }
 
@@ -29,4 +27,5 @@
   to {
     transform: rotate(360deg);
   }
-}
+}*/
+
