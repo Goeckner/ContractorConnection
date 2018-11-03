@@ -2,16 +2,10 @@
   "name": "contractor-connection",
   "version": "0.1.0",
   "private": true,
-<<<<<<< Updated upstream
   "dependencies": {},
-=======
-  "dependencies": {
-    "google-map-react": "~1.0.9",
-    "react-geocode": "~0.1.2"
-  },
->>>>>>> Stashed changes
   "devDependencies": {
     "google-map-react": "~1.0.9",
+    "react-geocode": "~0.1.2",
     "lodash": "~4.17.11",
     "connected-react-router": "~4.5.0",
     "babel-eslint": "9.0.0",
@@ -34,7 +28,7 @@
   },
   "scripts": {
     "lint": "eslint --fix --format table --ext .js,.jsx src --cache",
-    "start": "react-scripts start",
+    "start": "react-scripts start; rm npm-debug.log",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
