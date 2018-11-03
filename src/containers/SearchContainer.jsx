@@ -18,7 +18,7 @@ Geocode.setApiKey("AIzaSyBd0Bc-Mmak6eijlIANsD4iQCTRQp5J-N8");
 
 Geocode.enableDebug();
 
-Geocode.fromAddress("Eiffel Tower").then(
+Geocode.fromAddress("auburn").then(
 	response => {
 		const { lat, lng } = response.results[0].geometry.location;
 		defaultProps.center = {lat, lng}
