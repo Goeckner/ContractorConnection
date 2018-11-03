@@ -48,6 +48,11 @@ const renderInstructorForm = (classList, setClassList) => (
       <ControlLabel>Last Name</ControlLabel>
       <FormControl type="text" placeholder="Please enter last name" />
     </FormGroup>
+
+    <FormGroup>
+      <ControlLabel>Company Name (optional)</ControlLabel>
+      <FormControl type="text" placeholder="Please enter company name" />
+    </FormGroup>
     {
       classList ?
         map(classList, classObject => (
