@@ -5,6 +5,14 @@ export const setClassList = classes => dispatch => {
   })
 }
 
+export const setIsInstructor = bool => dispatch => {
+  dispatch({
+    type: 'SET_IS_INSTRUCTOR',
+    payload: bool
+  })
+}
+
 export default {
-  ...setClassList
+  ...setClassList,
+  ...setIsInstructor
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ControlLabel, Form, FormGroup, Button, FormControl, ListGroup, ListGroupItem } from 'react-bootstrap'
-import { setClassList } from '../redux/actions/signUpActions'
+import { ControlLabel, Radio, Form, FormGroup, Button, FormControl, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { setClassList, setIsInstructor } from '../redux/actions/signUpActions'
 import map from 'lodash/map'
 
 const renderClassInfoContainer = classObject => (
@@ -32,12 +32,39 @@ const addClass = classList => {
   return newClassList
 }
 
-const SignUpContainer = props => (
-	<Form horizontal className="loginForm">
+const renderInstructorForm = (classList, setClassList) => (
+  <div>
     <FormGroup>
       <ControlLabel>Email</ControlLabel>
       <FormControl type="email" placeholder="Email" />
     </FormGroup>
+
+    <FormGroup>
+      <ControlLabel>First Name</ControlLabel>
+      <FormControl type="text" placeholder="Please enter first name" />
+    </FormGroup>
+
+    <FormGroup>
+      <ControlLabel>Last Name</ControlLabel>
+      <FormControl type="text" placeholder="Please enter last name" />
+    </FormGroup>
+    {
+      classList ?
+        map(classList, classObject => (
+          <FormGroup>
+            <ListGroup className="class-list">
+              {renderClassInfoContainer(classObject)}
+            </ListGroup>
+          </FormGroup>
+          ))
+        : null
+    }
+    <Button bsStyle="success" onClick={() => setClassList(addClass(classList))}>Add a Class</Button>
+  </div>
+)
+
+const SignUpContainer = props => (
+	<Form horizontal className="loginForm">
 
     <FormGroup>
       <ControlLabel>Username</ControlLabel>
@@ -55,27 +82,15 @@ const SignUpContainer = props => (
     </FormGroup>
 
     <FormGroup>
-      <ControlLabel>First Name</ControlLabel>
-      <FormControl type="text" placeholder="Please enter first name" />
+      <ControlLabel>Are you an instructor?</ControlLabel>
+      <div>
+        <Radio name="radioGroup" inline onClick={() => props.setIsInstructor(true)}>Yes</Radio>
+        <Radio name="radioGroup" inline onClick={() => props.setIsInstructor(false)}>No</Radio>
+      </div>
     </FormGroup>
 
-    <FormGroup>
-      <ControlLabel>Last Name</ControlLabel>
-      <FormControl type="text" placeholder="Please enter last name" />
-    </FormGroup>
-    {console.log(props.classList)}
-    {
-      props.classList ?
-        map(props.classList, classObject => (
-          <FormGroup>
-            <ListGroup className="class-list">
-              {renderClassInfoContainer(classObject)}
-            </ListGroup>
-          </FormGroup>
-          ))
-        : null
-    }
-    <Button bsStyle="success" onClick={() => props.setClassList(addClass(props.classList))}>Add a Class</Button>
+    {props.isInstructor ? renderInstructorForm(props.classList, props.setClassList) : null}
+
     <FormGroup className="pull-right">
         <Button bsStyle="primary" type="submit">Sign in</Button>
     </FormGroup>
@@ -83,11 +98,12 @@ const SignUpContainer = props => (
 )
 
 const mapStateToProps = state => ({
-  ...state,
+  ...state.signUp,
 })
 
 const mapDispatchToProps = dispatch => ({
   setClassList: classes => dispatch(setClassList(classes)),
+  setIsInstructor: bool => dispatch(setIsInstructor(bool)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

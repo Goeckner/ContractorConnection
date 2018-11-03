@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux'
+
 export const classList = (state = [], action) => {
   switch ( action.type ) {
     case 'SET_CLASS_LIST':
@@ -7,6 +9,16 @@ export const classList = (state = [], action) => {
   }
 }
 
-export default {
-  classList
+export const isInstructor = (state = false, action) => {
+  switch ( action.type ) {
+    case 'SET_IS_INSTRUCTOR':
+      return action.payload
+    default:
+      return state
+  }
 }
+
+export default combineReducers({
+  classList,
+  isInstructor
+})
