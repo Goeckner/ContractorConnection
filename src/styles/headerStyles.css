@@ -15,3 +15,11 @@
   width: 30%;
   margin: auto;
 }
+
+.class-item {
+  padding: 4px;
+}
+
+.class-list {
+  margin: 8px 0px
+}

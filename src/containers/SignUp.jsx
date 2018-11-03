@@ -1,35 +1,36 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ControlLabel, Form, FormGroup, Col, Button, FormControl } from 'react-bootstrap'
+import { ControlLabel, Form, FormGroup, Button, FormControl, ListGroup, ListGroupItem } from 'react-bootstrap'
+import { setClassList } from '../redux/actions/signUpActions'
+import map from 'lodash/map'
 
 const renderClassInfoContainer = classObject => (
-  <div>
-    <FormGroup controlId="formControlsText">
-      <ControlLabel>Name of Class</ControlLabel>
-      <FormControl type="text" placeholder="ex: Intro to Handguns" value={classObject.name} />
-    </FormGroup>
+  <ListGroupItem>
+    <div className="class-item">
+      <FormGroup controlId="formControlsText">
+        <ControlLabel>Name of Class</ControlLabel>
+        <FormControl type="text" placeholder="ex: Intro to Handguns" />
+      </FormGroup>
 
-    <FormGroup controlId="formControlsTextarea">
-      <ControlLabel>Class Description</ControlLabel>
-      <FormControl componentClass="textarea" placeholder="Time, price, and short description" value={classObject.description} />
-    </FormGroup>
-  </div>
+      <FormGroup controlId="formControlsTextarea">
+        <ControlLabel>Class Description</ControlLabel>
+        <FormControl componentClass="textarea" style={{height: 100}}placeholder="Time, price, and short description" />
+      </FormGroup>
+    </div>
+  </ListGroupItem>
 )
 
-const addClass = () => {
-  classList.push({
-    name: '',
-    description: '',
-  })
-  console.log(classList)
-}
+const addClass = classList => {
+  const newClassList = [
+    ...classList,
+    {
+      name: '',
+      description: '',
+    }
+  ]
 
-const classList = [
-  {
-    name: 'Intro to Handguns',
-    description: 'This is an intro class',
-  }
-]
+  return newClassList
+}
 
 const SignUpContainer = props => (
 	<Form horizontal className="loginForm">
@@ -57,13 +58,21 @@ const SignUpContainer = props => (
       <ControlLabel>Last Name</ControlLabel>
       <FormControl type="text" placeholder="Please enter last name" />
     </FormGroup>
-    <Button bsStyle="success" onClick={() => addClass()}>+</Button>
-    {renderClassInfoContainer(classList)}
-
-    <FormGroup>
-      <Col smOffset={2} sm={2}>
+    {console.log(props.classList)}
+    {
+      props.classList ?
+        map(props.classList, classObject => (
+          <FormGroup>
+            <ListGroup className="class-list">
+              {renderClassInfoContainer(classObject)}
+            </ListGroup>
+          </FormGroup>
+          ))
+        : null
+    }
+    <Button bsStyle="success" onClick={() => props.setClassList(addClass(props.classList))}>Add a Class</Button>
+    <FormGroup className="pull-right">
         <Button bsStyle="primary" type="submit">Sign in</Button>
-      </Col>
     </FormGroup>
   </Form>
 )
@@ -73,6 +82,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  setClassList: classes => dispatch(setClassList(classes)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

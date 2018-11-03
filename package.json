@@ -2,10 +2,10 @@
   "name": "contractor-connection",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "google-map-react": "~1.0.9"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "google-map-react": "~1.0.9",
+    "lodash": "~4.17.11",
     "connected-react-router": "~4.5.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
