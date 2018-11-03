@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-const InstructorSummary = props =>
+const InstructorSummary = ({ instructor }) =>
 {
     return (
         <tr>
             <td>
                 <strong>
-                    {props.instructor.name}
+                    {instructor.name}
                 </strong><br/>
                 <span>
-                    {props.instructor.email}
+                    {instructor.email}
                 </span>
             </td>
         </tr>
