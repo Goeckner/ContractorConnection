@@ -10,9 +10,9 @@ export default createSelector(
   (instructors, searchText) => {
 
     return filter(instructors, instructor => (
-        includes(instructor.name, searchText) ||
-        includes(instructor.email, searchText) ||
-        includes(instructor.company, searchText)
+        includes(instructor.name.toLowerCase(), searchText.toLowerCase()) ||
+        includes(instructor.email.toLowerCase(), searchText.toLowerCase()) ||
+        includes(instructor.company.toLowerCase(), searchText.toLowerCase())
       ))
   }
 )
