@@ -40,6 +40,11 @@ const SignUpContainer = props => (
     </FormGroup>
 
     <FormGroup>
+      <ControlLabel>Username</ControlLabel>
+      <FormControl type="text" placeholder="Password" />
+    </FormGroup>
+
+    <FormGroup>
       <ControlLabel>Password</ControlLabel>
       <FormControl type="password" placeholder="Password" />
     </FormGroup>
