@@ -24,7 +24,9 @@ const SearchContainer = props => (
 	<Grid className="instructor-search-container" >
 
 		<Row className="search-utils" >
-			<SearchBar />
+			<SearchBar 
+			value = ""
+			/>
 		</Row >
 
 		<Row className="results-container" >
