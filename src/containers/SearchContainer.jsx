@@ -6,22 +6,13 @@ import InstructorsList from '../components/Search-Components/Instructors-ListCom
 import MapContainer from '../components/Search-Components/MapContainer';
 import Geocode from "react-geocode";
 
-var defaultProps = {
-    center: {
-      lat: 41.850033,
-      lng: -96.6500523
-    },
-    zoom: 3
-  }
-
 Geocode.setApiKey("AIzaSyBd0Bc-Mmak6eijlIANsD4iQCTRQp5J-N8");
 
 Geocode.enableDebug();
 
-Geocode.fromAddress("auburn").then(
+Geocode.fromAddress("france").then(
 	response => {
 		const { lat, lng } = response.results[0].geometry.location;
-		defaultProps.center = {lat, lng}
 		console.log(lat, lng);
 	},
 	error => {
@@ -43,9 +34,10 @@ const SearchContainer = props => (
 			</Col >
 
 			<Col xs={6} className="results-map-container" >
+				{console.log(props)}
 				<MapContainer 
-					center = {defaultProps.center}
-					zoom = {defaultProps.zoom}
+					center = {props.Coordinates.center}
+					zoom = {props.Coordinates.zoom}
 				/>
 			</Col >
 
@@ -55,7 +47,7 @@ const SearchContainer = props => (
 )
 
 const mapStateToProps = state => ({
-  ...state,
+  ...state.searchPage
 })
 
 const mapDispatchToProps = dispatch => ({

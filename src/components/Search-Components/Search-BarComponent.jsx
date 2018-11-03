@@ -1,12 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import {Button, FormControl, Col} from 'react-bootstrap'
 
 const SearchBar = props => (
-    <div className = "search-bar">
-        <input
+    <div>
+        <Col sm = "6" className = "search-bar">
+            <FormControl bsSize = "large">
 
-        />
+            </FormControl>
+        </Col>
+        <Col>
+            <Button bsSize = "large">
+                Search
+            </Button>
+        </Col>
     </div>
+    
 )
 
 const mapStateToProps = state => ({

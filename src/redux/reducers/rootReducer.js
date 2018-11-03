@@ -5,6 +5,6 @@ import signUp from './signUpReducer'
 
 export default combineReducers({
   activePage,
-  instructors: searchPage,
+  searchPage,
   signUp,
 })

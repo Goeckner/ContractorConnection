@@ -5,11 +5,11 @@ import InstructorSummary from './Instructor-SummaryComponent'
 
 const InstructorsList = props =>
 {
-    const instructorCell = props.instructors.map((instructor) =>
+    const instructorCell = props.instructorList.map((inst) =>
     {
         return (
             <InstructorSummary
-                instructor = {instructor}
+                instructor = {inst}
             />
         )
     })
@@ -24,7 +24,7 @@ const InstructorsList = props =>
 }
 
 const mapStateToProps = state => ({
-    ...state,
+    ...state.searchPage,
 })
 
 const mapDispatchToProps = dispatch => ({
