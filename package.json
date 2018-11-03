@@ -28,7 +28,7 @@
   },
   "scripts": {
     "lint": "eslint --fix --format table --ext .js,.jsx src --cache",
-    "start": "react-scripts start; rm npm-debug.log",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
