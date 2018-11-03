@@ -22,11 +22,11 @@ const SearchContainer = props => (
 
 		<Row className="results-container" >
 
-			<Col className="results-list-container" >
+			<Col xs={6} className="results-list-container" >
 				<InstructorsList />
 			</Col >
 
-			<Col className="results-map-container" >
+			<Col xs={6} className="results-map-container" >
 				<MapContainer 
 					center = {defaultProps.center}
 					zoom = {defaultProps.zoom}

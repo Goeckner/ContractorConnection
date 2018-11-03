@@ -7,7 +7,7 @@ const MapComponent = props =>
 
     return (
         <div>
-            <div style= {{height: '100vh', width: '100%'}}>
+            <div style= {{height: '55vh', width: '100%'}}>
                 <GoogleMapReact
                     bootstrapURLKeys={{key: 'AIzaSyCG_sIE8lwlWXSulBV_iEE4jH-QZzp3Y38'}}
                     defaultCenter={props.center}
