@@ -8,18 +8,14 @@ const SearchBar = props => {
 
     return (
         <div>
-            <Col sm = "6" className = "search-bar">
-                <FormControl bsSize = "large" type="text" onChange={(e)=>props.setSearch(e.target.value)}>
-
+            <Col sm = "6" className="search-bar">
+                <FormControl
+                  bsSize="large"
+                  type="text"
+                  placeholder="Search for an instructor"
+                  onChange={(e)=>props.setSearch(e.target.value)}
+                >
                 </FormControl>
-                {console.log(props)}
-            </Col>
-            <Col>
-                <ButtonToolbar>
-                    <Button bsSize = "large">
-                        Search
-                    </Button>
-                </ButtonToolbar>
             </Col>
         </div>
     )

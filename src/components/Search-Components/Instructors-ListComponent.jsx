@@ -14,7 +14,7 @@ const InstructorsList = props =>
     )
 
     return (
-        <Table hover className = "instructors-list">
+        <Table hover className="instructors-list">
             <tbody>
                 {instructorCell}
             </tbody>
@@ -23,7 +23,6 @@ const InstructorsList = props =>
 }
 
 const mapStateToProps = state => ({
-    ...state.searchPage,
     filteredInstructors: getFilteredInstructorList(state),
 })
 

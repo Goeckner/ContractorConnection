@@ -1,4 +1,3 @@
-import '../styles/HomeContainer.css'
 import { connect } from 'react-redux'
 import { Carousel } from 'react-bootstrap'
 import React from 'react'
