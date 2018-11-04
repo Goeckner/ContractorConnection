@@ -13,7 +13,7 @@ const updateCoordinates = (address, setCoordinates) =>
     Geocode.fromAddress(address).then(
         response => {
             const { lat, lng } = response.results[0].geometry.location;
-            setCoordinates({center:{lat: lat, lng: lng}, zoom: 11})
+            setCoordinates({center:{lat: lat, lng: lng}, zoom: 10})
             console.log(lat, lng)
         },
         error => {
@@ -27,7 +27,6 @@ const InstructorSummary = props =>
     return (
         <tr onClick={()=>{props.setMapAddress(props.instructor.location)
                           updateCoordinates(props.instructor.location, props.setCoordinates)
-                            // props.setCoordinates({center: coors, zoom: 11})
                           }}>
             <td>
                 <strong>

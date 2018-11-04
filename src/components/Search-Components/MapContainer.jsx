@@ -26,8 +26,9 @@ const MapComponent = props =>
                 <GoogleMapReact
                     bootstrapURLKeys={{key: 'AIzaSyCG_sIE8lwlWXSulBV_iEE4jH-QZzp3Y38'}}
                     center={props.center}
-                    zoom={props.zoom}
-                    onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
+                    zoom={11}
+                    defaultZoom = {3}
+                    // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
                 >
                 </GoogleMapReact>
             </div>

@@ -6,7 +6,7 @@ const instructors = [
     {name: 'John Smith', email: 'maybe@google.com', location: '770 Puma Blvd', company: 'Walmart'},
     {name: 'Mary johnson', email: 'Example@comcast.com', location: 'White House', company: 'Guns r Us'},
     {name: 'Michael Morgan', email: 'Example@fake.org', location: 'Busch Stadium', company: 'Guns r Us'},
-    {name: 'John Smith', email: 'brad@real.com', location: '61 Circle Drive', company: 'Gap'},
+    {name: 'John Smith', email: 'brad@real.com', location: '61 Circle Drive Edwardsville', company: 'Gap'},
     {name: 'Abbie Smith', email: 'kim@tim.com', location: 'Glen Carbon', company: 'Apple'},
     {name: 'Michael Patrick', email: 'Landon@fake.com', location: 'Troy', company: 'Guns r Us'},
     {name: 'Jim Jones', email: 'me@siue.com', location: 'New York', company: 'Guns r Us'},
