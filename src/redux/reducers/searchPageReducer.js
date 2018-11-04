@@ -1,19 +1,19 @@
 import { combineReducers } from "redux";
 
 const instructors = [
-    {name: 'Jerry Smith', email: 'siue@hello.com', location: 'Auburn', company: 'Guns r Us'},
-    {name: 'Penny Hanson', email: 'Example@fake.com', location: 'Edwardsville', company: 'Guns r Us'},
-    {name: 'John Smith', email: 'maybe@google.com', location: 'Edwardsville', company: 'Walmart'},
-    {name: 'Mary johnson', email: 'Example@comcast.com', location: 'Edwardsville', company: 'Guns r Us'},
-    {name: 'Michael Cox', email: 'Example@fake.org', location: 'St. Louis', company: 'Guns r Us'},
-    {name: 'John Smith', email: 'brad@real.com', location: 'Edwardsville', company: 'Gap'},
-    {name: 'John Smith', email: 'kim@tim.com', location: 'Edwardsville', company: 'Apple'},
-    {name: 'Michael Hunt', email: 'Landon@fake.com', location: 'Edwardsville', company: 'Guns r Us'},
-    {name: 'Jim Jones', email: 'me@siue.com', location: 'Edwardsville', company: 'Guns r Us'},
+    {name: 'Jerry Smith', email: 'siue@hello.com', location: '4630 Brookview Drive', company: 'Guns r Us'},
+    {name: 'Penny Hanson', email: 'Example@fake.com', location: '1547 Weber Drive', company: 'Guns r Us'},
+    {name: 'John Smith', email: 'maybe@google.com', location: '770 Puma Blvd', company: 'Walmart'},
+    {name: 'Mary johnson', email: 'Example@comcast.com', location: 'White House', company: 'Guns r Us'},
+    {name: 'Michael Morgan', email: 'Example@fake.org', location: 'Busch Stadium', company: 'Guns r Us'},
+    {name: 'John Smith', email: 'brad@real.com', location: '61 Circle Drive', company: 'Gap'},
+    {name: 'Abbie Smith', email: 'kim@tim.com', location: 'Glen Carbon', company: 'Apple'},
+    {name: 'Michael Patrick', email: 'Landon@fake.com', location: 'Troy', company: 'Guns r Us'},
+    {name: 'Jim Jones', email: 'me@siue.com', location: 'New York', company: 'Guns r Us'},
     {name: 'John Smith', email: 'Example@fake.com', location: 'Edwardsville', company: 'Guns r Us'}
 ]
 
-const defaultCoordinates = {
+var defaultCoordinates = {
   center: {
     lat: 41.850033,
     lng: -96.6500523
@@ -47,9 +47,19 @@ export const instructorList = (state = instructors, action) => {
         return state
     }
   }
+
+  export const Address = (state = "United States", action) => {
+    switch ( action.type ) {
+      case 'SET_MAP_ADDRESS':
+        return action.payload
+      default:
+        return state
+    }
+  }
   
   export default combineReducers({
     instructorList,
     Coordinates,
-    SearchCriteria
+    SearchCriteria,
+    Address
   })

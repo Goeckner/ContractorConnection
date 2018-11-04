@@ -1,16 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {setMapAddress} from '../../redux/actions/setMapAddress'
 
-const InstructorSummary = ({ instructor }) =>
+const InstructorSummary = props =>
 {
     return (
-        <tr>
+        <tr onClick={()=>props.setMapAddress(props.instructor.location)}>
             <td>
                 <strong>
-                    {instructor.name}
+                    {props.instructor.name}
                 </strong><br/>
                 <span>
-                    {instructor.email}
+                    {props.instructor.email}
                 </span>
             </td>
         </tr>
@@ -18,10 +19,11 @@ const InstructorSummary = ({ instructor }) =>
 }
 
 const mapStateToProps = state => ({
-    ...state,
+    ...state.seachPage
 })
 
 const mapDispatchToProps = dispatch => ({
+    setMapAddress: address => dispatch(setMapAddress(address))
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

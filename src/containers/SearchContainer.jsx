@@ -5,54 +5,60 @@ import SearchBar from '../components/Search-Components/Search-BarComponent'//Sea
 import InstructorsList from '../components/Search-Components/Instructors-ListComponent'
 import MapContainer from '../components/Search-Components/MapContainer';
 import Geocode from "react-geocode";
+import {setCoordinates} from '../redux/actions/setCoordinates'
 
-Geocode.setApiKey("AIzaSyBd0Bc-Mmak6eijlIANsD4iQCTRQp5J-N8");
+const SearchContainer = props => {
 
-Geocode.enableDebug();
+	Geocode.setApiKey("AIzaSyBd0Bc-Mmak6eijlIANsD4iQCTRQp5J-N8");
 
-Geocode.fromAddress("france").then(
-	response => {
-		const { lat, lng } = response.results[0].geometry.location;
-		console.log(lat, lng);
-	},
-	error => {
-		console.error(error);
-	}
-);
+    Geocode.enableDebug();
 
-const SearchContainer = props => (
-	<Grid className="instructor-search-container" >
+    Geocode.fromAddress(props.Address).then(
+        response => {
+			const { lat, lng } = response.results[0].geometry.location;
+			props.setCoordinates({center:{lat: lat, lng: lng}, zoom: 6})
+			console.log(lat, lng)
+			console.log(props)
+        },
+        error => {
+            console.error(error);
+        }
+    );
 
-		<Row className="search-utils" >
-			<SearchBar 
-			value = ""
-			/>
-		</Row >
+	return (
+		<Grid className="instructor-search-container" >
 
-		<Row className="results-container" >
-
-			<Col xs={6} className="results-list-container" >
-				<InstructorsList />
-			</Col >
-
-			<Col xs={6} className="results-map-container" >
-				{console.log(props)}
-				<MapContainer 
-					center = {props.Coordinates.center}
-					zoom = {props.Coordinates.zoom}
+			<Row className="search-utils" >
+				<SearchBar 
+				value = ""
 				/>
-			</Col >
+			</Row >
 
-		</Row >
+			<Row className="results-container" >
 
-	</Grid >
-)
+				<Col xs={6} className="results-list-container" >
+					<InstructorsList />
+				</Col >
+
+				<Col xs={6} className="results-map-container" >
+					<MapContainer 
+						center = {props.Coordinates.center}
+						zoom = {props.Coordinates.zoom}
+					/>
+				</Col >
+
+			</Row >
+
+		</Grid >
+	)
+}
 
 const mapStateToProps = state => ({
   ...state.searchPage
 })
 
 const mapDispatchToProps = dispatch => ({
+	setCoordinates: coordinates => dispatch(setCoordinates(coordinates))
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
