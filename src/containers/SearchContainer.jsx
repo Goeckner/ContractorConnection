@@ -4,27 +4,9 @@ import { Grid,Col,Row } from 'react-bootstrap';
 import SearchBar from '../components/Search-Components/Search-BarComponent'//Search-BarComponent from '../components/Search-Components/Search-BarComponent'
 import InstructorsList from '../components/Search-Components/Instructors-ListComponent'
 import MapContainer from '../components/Search-Components/MapContainer';
-import Geocode from "react-geocode";
 import {setCoordinates} from '../redux/actions/setCoordinates'
 
 const SearchContainer = props => {
-
-	Geocode.setApiKey("AIzaSyBd0Bc-Mmak6eijlIANsD4iQCTRQp5J-N8");
-
-    Geocode.enableDebug();
-
-    Geocode.fromAddress(props.Address).then(
-        response => {
-			const { lat, lng } = response.results[0].geometry.location;
-			props.setCoordinates({center:{lat: lat, lng: lng}, zoom: 6})
-			console.log(lat, lng)
-			console.log(props)
-        },
-        error => {
-            console.error(error);
-        }
-    );
-
 	return (
 		<Grid className="instructor-search-container" >
 

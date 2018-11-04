@@ -48,7 +48,7 @@ export const instructorList = (state = instructors, action) => {
     }
   }
 
-  export const Address = (state = "United States", action) => {
+  export const Address = (state = "61 Circle Drive", action) => {
     switch ( action.type ) {
       case 'SET_MAP_ADDRESS':
         return action.payload
