@@ -53,17 +53,18 @@ const renderInstructorForm = (classList, setClassList) => (
       <ControlLabel>Company Name (optional)</ControlLabel>
       <FormControl type="text" placeholder="Please enter company name" />
     </FormGroup>
+
+    <FormGroup>
+      <ListGroup className="class-list">
     {
       classList ?
         map(classList, classObject => (
-          <FormGroup>
-            <ListGroup className="class-list">
-              {renderClassInfoContainer(classObject)}
-            </ListGroup>
-          </FormGroup>
+            renderClassInfoContainer(classObject)
           ))
         : null
     }
+      </ListGroup>
+    </FormGroup>
     <Button bsStyle="success" onClick={() => setClassList(addClass(classList))}>Add a Class</Button>
   </div>
 )
