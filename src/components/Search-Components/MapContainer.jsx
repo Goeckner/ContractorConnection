@@ -18,6 +18,10 @@ const bindResizeListener = (map, maps, bounds) => {
     }
   };
 
+  const Marker = props => {
+    return <div className="SuperAwesomePin"></div>
+  }
+
 const MapComponent = props => 
 {
     return (
@@ -26,10 +30,10 @@ const MapComponent = props =>
                 <GoogleMapReact
                     bootstrapURLKeys={{key: 'AIzaSyCG_sIE8lwlWXSulBV_iEE4jH-QZzp3Y38'}}
                     center={props.center}
-                    zoom={11}
-                    defaultZoom = {3}
-                    // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
+                    defaultZoom = {props.zoom}
+                    //onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}
                 >
+                    <Marker lat={props.center.lat} lng={props.center.lng} />
                 </GoogleMapReact>
             </div>
         </div>

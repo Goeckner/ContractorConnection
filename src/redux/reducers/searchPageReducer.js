@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
 const instructors = [
-    {name: 'Jerry Smith', email: 'siue@hello.com', location: '4630 Brookview Drive', company: 'Guns r Us'},
+    {name: 'Dennis Ritchie', email: 'DRitchie@unix.com', location: '4630 Brookview Drive', company: 'Guns r Us'},
     {name: 'Penny Hanson', email: 'Example@fake.com', location: '1547 Weber Drive', company: 'Guns r Us'},
     {name: 'John Smith', email: 'maybe@google.com', location: '770 Puma Blvd', company: 'Walmart'},
     {name: 'Mary johnson', email: 'Example@comcast.com', location: 'White House', company: 'Guns r Us'},
@@ -10,15 +10,25 @@ const instructors = [
     {name: 'Abbie Smith', email: 'kim@tim.com', location: 'Glen Carbon', company: 'Apple'},
     {name: 'Michael Patrick', email: 'Landon@fake.com', location: 'Troy', company: 'Guns r Us'},
     {name: 'Jim Jones', email: 'me@siue.com', location: 'New York', company: 'Guns r Us'},
-    {name: 'John Smith', email: 'Example@fake.com', location: 'Edwardsville', company: 'Guns r Us'}
+    {name: 'John Kelly', email: 'Kelly@outlook.com', location: 'Austin, Texas', company: 'Guns r Us'},
+    {name: 'James Bond', email: 'JBond@MI6.uk', location: 'London', company: 'MI6'},
+    {name: 'Patrick Brown', email: 'PBrown@fbi.gov', location: 'Pentagon', company: 'CIA'},
+    {name: 'Tyler Richards', email: 'TRich@yahoo.com', location: 'Los Angeles', company: 'The Dodgers'},
+    {name: 'Michael Morrison', email: 'me@mm.com', location: 'Washington Monument', company: 'NRA'},
+    {name: 'Samuel Adams', email: 'freedom@usa.gov', location: 'St. Louis', company: 'Founding Fathers'},
+    {name: 'John Adams', email: 'ja@real.com', location: '61 Circle Drive Edwardsville', company: 'Gap'},
+    {name: 'Ronald Swanson', email: 'null@null.org', location: 'Pawnee, Illinois', company: 'Parks and Recreation'},
+    {name: 'Michael Scott', email: 'MScott@DunderMifflin.com', location: 'Scranton, Pennsylvania', company: 'Guns r Us'},
+    {name: 'Bill Gates', email: 'BGates@windows.com', location: 'Seattle, Washington', company: 'Microsoft'},
+    {name: 'Steve Jobs', email: 'sj@apple.com', location: 'Seattle, Washington', company: 'Apple'}
 ]
 
 var defaultCoordinates = {
   center: {
-    lat: 41.850033,
-    lng: -96.6500523
+    lat: 38.7931,
+    lng: -90.001
   },
-  zoom: 11
+  zoom: 15
 }
 
 export const SearchCriteria = (state = "", action) => {

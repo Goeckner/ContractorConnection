@@ -14,11 +14,14 @@ const InstructorsList = props =>
     )
 
     return (
-        <Table hover className="instructors-list">
-            <tbody>
-                {instructorCell}
-            </tbody>
-        </Table>
+        <div className="instructors-list-div">
+            <Table hover className="instructors-list">
+                <tbody>
+                    {instructorCell}
+                </tbody>
+            </Table>
+        </div>
+        
     )
 }
 
