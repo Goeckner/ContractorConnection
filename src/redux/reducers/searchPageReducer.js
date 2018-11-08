@@ -18,7 +18,7 @@ var defaultCoordinates = {
     lat: 41.850033,
     lng: -96.6500523
   },
-  zoom: 3
+  zoom: 11
 }
 
 export const SearchCriteria = (state = "", action) => {
