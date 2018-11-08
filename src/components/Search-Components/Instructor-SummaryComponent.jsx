@@ -7,7 +7,7 @@ import {setCoordinates} from '../../redux/actions/setCoordinates'
 
 const updateCoordinates = (address, setCoordinates) =>
 {
-    Geocode.setApiKey("AIzaSyBd0Bc-Mmak6eijlIANsD4iQCTRQp5J-N8");
+    Geocode.setApiKey("");
 
     Geocode.enableDebug();
 

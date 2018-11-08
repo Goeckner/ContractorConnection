@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
 
 const instructors = [
-    {name: 'Dennis Ritchie', email: 'DRitchie@unix.com', location: '4630 Brookview Drive', company: 'Guns r Us'},
+    {name: 'Dennis Ritchie', email: 'DRitchie@unix.c', location: '4630 Brookview Drive', company: 'Guns r Us'},
     {name: 'Penny Hanson', email: 'Example@fake.com', location: '1547 Weber Drive', company: 'Guns r Us'},
     {name: 'John Smith', email: 'maybe@google.com', location: '770 Puma Blvd', company: 'Walmart'},
     {name: 'Mary johnson', email: 'Example@comcast.com', location: 'White House', company: 'Guns r Us'},
     {name: 'Michael Morgan', email: 'Example@fake.org', location: 'Busch Stadium', company: 'Guns r Us'},
     {name: 'John Smith', email: 'brad@real.com', location: '61 Circle Drive Edwardsville', company: 'Gap'},
     {name: 'Abbie Smith', email: 'kim@tim.com', location: 'Glen Carbon', company: 'Apple'},
-    {name: 'Michael Patrick', email: 'Landon@fake.com', location: 'Troy', company: 'Guns r Us'},
+    {name: 'Michael Patrick', email: 'Landon@fake.com', location: 'Troy, Illinois', company: 'Guns r Us'},
     {name: 'Jim Jones', email: 'me@siue.com', location: 'New York', company: 'Guns r Us'},
     {name: 'John Kelly', email: 'Kelly@outlook.com', location: 'Austin, Texas', company: 'Guns r Us'},
     {name: 'James Bond', email: 'JBond@MI6.uk', location: 'London', company: 'MI6'},
