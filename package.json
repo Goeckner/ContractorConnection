@@ -2,7 +2,9 @@
   "name": "contractor-connection",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "dotenv": "~6.1.0"
+  },
   "devDependencies": {
     "google-map-react": "~1.0.9",
     "react-geocode": "~0.1.2",
