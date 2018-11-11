@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
 const instructors = [
-    {name: 'Dennis Ritchie', email: 'DRitchie@unix.c', location: '4630 Brookview Drive', company: 'Guns r Us'},
-    {name: 'Penny Hanson', email: 'Example@fake.com', location: '1547 Weber Drive', company: 'Guns r Us'},
+    {name: 'Dennis Ritchie', email: 'DRitchie@unix.c', location: 'Boston', company: 'Guns r Us'},
+    {name: 'Penny Hanson', email: 'Example@fake.com', location: 'Central Park, New York', company: 'Guns r Us'},
     {name: 'John Smith', email: 'maybe@google.com', location: '770 Puma Blvd', company: 'Walmart'},
     {name: 'Mary johnson', email: 'Example@comcast.com', location: 'White House', company: 'Guns r Us'},
     {name: 'Michael Morgan', email: 'Example@fake.org', location: 'Busch Stadium', company: 'Guns r Us'},
