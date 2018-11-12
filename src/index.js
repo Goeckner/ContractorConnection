@@ -9,6 +9,9 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import thunk from 'redux-thunk'
 import rootReducer from './redux/reducers/rootReducer'
+require('dotenv').config({path: '../'})
+
+console.log(process.env)
 
 const history = createBrowserHistory()
 

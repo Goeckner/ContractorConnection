@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import GoogleMapReact from 'google-map-react'
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const bindResizeListener = (map, maps, bounds) => {
     maps.event.addDomListenerOnce(map, 'idle', () => {
@@ -31,7 +28,7 @@ const MapComponent = props =>
         <div>
             <div style= {{height: '55vh', width: '100%'}}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{key: process.env.GOOGLE_MAPS_API_KEY}}
+                    bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY}}
                     center={props.center}
                     defaultZoom = {props.zoom}
                     //onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps)}

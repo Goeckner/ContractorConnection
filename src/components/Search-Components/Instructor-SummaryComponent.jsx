@@ -4,13 +4,10 @@ import {setMapAddress} from '../../redux/actions/setMapAddress'
 import Geocode from "react-geocode";
 import {Col, Row} from 'react-bootstrap'
 import {setCoordinates} from '../../redux/actions/setCoordinates'
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const updateCoordinates = (address, setCoordinates) =>
 {
-    Geocode.setApiKey(process.env.GOOGLE_MAPS_API_KEY);
+    Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
 
     Geocode.enableDebug();
 
