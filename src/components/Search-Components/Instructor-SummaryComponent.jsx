@@ -14,7 +14,7 @@ const updateCoordinates = (address, setCoordinates) =>
     Geocode.fromAddress(address).then(
         response => {
             const { lat, lng } = response.results[0].geometry.location;
-            setCoordinates({center:{lat: lat, lng: lng}, zoom: 19})
+            setCoordinates({center:{lat: lat, lng: lng}, zoom: 15})
             console.log(lat, lng)
         },
         error => {

@@ -6,3 +6,32 @@
   height: 790px;
   overflow-y: auto;
 }
+
+.google-maps-marker {
+  
+}
+
+.marker-top {
+  width: 130px;
+  height: 40px;
+  top: -60px;
+  left: -65px;
+  position: absolute;
+  background: lightgray;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.marker-bottom {
+  width: 0;
+  height: 0;
+  top: -20px;
+  left: -10px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 20px solid lightgray;
+}
