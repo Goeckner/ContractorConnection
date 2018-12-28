@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { Grid,Col,Row } from 'react-bootstrap';
 import SearchBar from '../components/Search-Components/Search-BarComponent'//Search-BarComponent from '../components/Search-Components/Search-BarComponent'
 import InstructorsList from '../components/Search-Components/Instructors-ListComponent'
-import MapContainer from '../components/Search-Components/MapContainer';
+import MapContainer from '../components/Search-Components/MapContainer'
+import SearchFilter from '../components/Search-Components/Search-FilterComponent'
 import {setCoordinates} from '../redux/actions/setCoordinates'
 
 const SearchContainer = props => {
@@ -11,16 +12,22 @@ const SearchContainer = props => {
 		<Grid className="instructor-search-container" >
 
 			<Row className="search-utils" >
+
 				<SearchBar />
+
+				<Col md="6" className="map-filter">
+					<SearchFilter />
+				</Col>
+				
 			</Row >
 
 			<Row className="results-container" >
 
-				<Col xs={6} className="results-list-container" >
+				<Col md={6} className="results-list-container" >
 					<InstructorsList />
 				</Col >
 
-				<Col xs={6} className="results-map-container" >
+				<Col md={6} className="results-map-container" >
 					<MapContainer 
 						center = {props.Coordinates.center}
 						zoom = {props.Coordinates.zoom}

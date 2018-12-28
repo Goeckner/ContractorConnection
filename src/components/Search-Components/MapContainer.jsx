@@ -6,21 +6,21 @@ import map from 'lodash/map'
 
 const bindResizeListener = (map, maps, bounds) => {
     maps.event.addDomListenerOnce(map, 'idle', () => {
-      maps.event.addDomListener(window, 'resize', () => {
-        map.fitBounds(bounds);
-      })
+        maps.event.addDomListener(window, 'resize', () => {
+            map.fitBounds(bounds);
+        })
     })
-  }
+}
   
-  const apiIsLoaded = (map, maps) => {
+const apiIsLoaded = (map, maps) => {
     if (map) {
-      const bounds = new maps.LatLngBounds();
-      map.fitBounds(bounds);
-      bindResizeListener(map, maps, bounds);
+        const bounds = new maps.LatLngBounds();
+        map.fitBounds(bounds);
+        bindResizeListener(map, maps, bounds);
     }
-  }
+}
 
-  const Marker = props => {
+const Marker = props => {
     return (
         <div className="google-maps-marker">
             <div className="marker-top">
@@ -31,7 +31,7 @@ const bindResizeListener = (map, maps, bounds) => {
             </div>
         </div>
     )
-  }
+}
 
 const MapComponent = props => 
 {
