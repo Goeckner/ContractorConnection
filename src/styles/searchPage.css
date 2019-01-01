@@ -17,6 +17,17 @@
   font-size: 24px;
 }
 
+.filter-sub-title {
+  font-size: 20px;
+  padding-left: 1em;
+}
+
+.filter-regular {
+  font-size: 16px;
+  padding-left: 1em;
+  margin:1px;
+}
+
 .instructors-list-div {
   height: 790px;
   overflow-y: auto;
