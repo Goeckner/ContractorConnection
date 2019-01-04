@@ -2,10 +2,34 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { ControlLabel, Radio, Form, FormGroup, Button, FormControl, ListGroup, ListGroupItem } from 'react-bootstrap'
 import { setClassList, setIsInstructor } from '../redux/actions/signUpActions'
+import filter from 'lodash/filter'
 import map from 'lodash/map'
 
-const renderClassInfoContainer = classObject => (
+
+let idCounter = 0
+const addClass = classList => {
+  const newClassList = [
+    ...classList,
+    {
+      id: idCounter,
+      name: '',
+      description: '',
+    }
+  ]
+  idCounter++
+
+  return newClassList
+}
+
+const removeClass = (classList, classObject) => {
+  const newClassList = filter(classList, classToRemove => classToRemove.id !== classObject.id)
+
+  return newClassList
+}
+
+const renderClassInfoContainer = (classList, classObject, setClassList) => (
   <ListGroupItem>
+    <Button bsStyle="danger" onClick={() => setClassList(removeClass(classList, classObject))}>Remove Class</Button>
     <div className="class-item">
       <FormGroup controlId="formControlsText">
         <ControlLabel>Name of Class</ControlLabel>
@@ -19,18 +43,6 @@ const renderClassInfoContainer = classObject => (
     </div>
   </ListGroupItem>
 )
-
-const addClass = classList => {
-  const newClassList = [
-    ...classList,
-    {
-      name: '',
-      description: '',
-    }
-  ]
-
-  return newClassList
-}
 
 const renderInstructorForm = (classList, setClassList) => (
   <div>
@@ -59,7 +71,7 @@ const renderInstructorForm = (classList, setClassList) => (
     {
       classList ?
         map(classList, classObject => (
-            renderClassInfoContainer(classObject)
+            renderClassInfoContainer(classList, classObject, setClassList)
           ))
         : null
     }

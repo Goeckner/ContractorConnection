@@ -60,6 +60,7 @@
     "template-curly-spacing":[ "error", "never" ],
     "array-bracket-spacing": [ "error", "always", { "objectsInArrays": false } ],
     "comma-dangle": [ "error", "always-multiline" ],
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
+    "linebreak-style": "off"
   }
 }
