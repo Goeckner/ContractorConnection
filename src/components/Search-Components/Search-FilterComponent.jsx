@@ -1,49 +1,48 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import map from 'lodash/map'
-import {FormGroup, FormControl, DropdownButton, Modal, Button, ButtonGroup, Col, Row} from 'react-bootstrap'
+import {FormGroup, FormControl, ButtonToolbar, Modal, Button, ButtonGroup, Row} from 'react-bootstrap'
+import Rating from 'react-rating'
 import {setShowFilter} from '../../redux/actions/setShowFilter'
 
 const FilterDropDown = props => {
     return (
         <div> 
             <Row className = "filter-title">
-                Location:
+                Distance
             </Row>
-                <Row className = "filter-sub-title">
-                    Distance
+                <Row className = "filter-regular">
+                    Maximum Distance in Miles
                 </Row>
-                    <Row className = "filter-regular">
-                        Maximum Distance in Miles
-                    </Row>
-                    <FormGroup className = "filter-regular">
-                    <FormControl componentClass="select" placeholder="No Max">
-                        <option value="No Max">No Max</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                        <option value="20">20</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                    </FormControl>
-                    </FormGroup>
-                    <Row className = "filter-regular">
-                        From
-                    </Row>
-                    <FormGroup className = "filter-regular">
-                    <FormControl className = "filter-regular" type="text" placeholder="Address" />
-                    </FormGroup>
-                <Row className = "filter-sub-title">
-                    <br />
-                    Zip Code
+                <FormGroup className = "filter-regular">
+                <FormControl componentClass="select" placeholder="No Max">
+                    <option value="No Max">No Max</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </FormControl>
+                </FormGroup>
+                <Row className = "filter-regular">
+                    From
                 </Row>
-                    <FormGroup className = "filter-regular">
-                    <FormControl className = "filter-regular" type="text" placeholder="Zip" />
-                    </FormGroup>      
+                <FormGroup className = "filter-regular">
+                <FormControl className = "filter-regular" type="text" placeholder="Address" />
+                </FormGroup>
+                <br />
             <Row className = "filter-title">
                 Rating:
             </Row>
+                <Row className = "filter-regular">
+                    Minimum Instructor Rating
+                </Row>
+                <Rating className = "filter-regular" initialRating = {undefined} stop = {5}/>
+                <br />
+                <ButtonGroup className = "filter-regular">
+                    {/* TODO: Connect this button, and the Rating component itself to a reducer */}
+                    <Button bsSize = "small">Reset</Button>
+                </ButtonGroup>                
         </div>
-        
     )
 }
 
@@ -55,11 +54,17 @@ const SearchFilter = props => {
             </Button>
 
             <Modal show={props.showFilter} onHide={() => props.setShowFilter(false)}>
-                <Col className = "filter-selection">
+                <Modal.Body className = "filter-selection">
                     <FilterDropDown />
-                </Col>
+                </Modal.Body>
+                <Modal.Footer>
+                    <ButtonToolbar>
+                        <Button onClick = {() => props.setShowFilter(false)}>Cancel</Button>
+                        <Button bsStyle = "primary" onClick = {() => props.setShowFilter(false)}>Apply Changes</Button>
+                    </ButtonToolbar>                    
+                </Modal.Footer>
             </Modal>
-        </div>        
+        </div>
     )
 }
 

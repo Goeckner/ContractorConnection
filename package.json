@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "dotenv": "~6.1.0"
+    "dotenv": "~6.1.0",
+    "react-rating": "~1.6.2"
   },
   "devDependencies": {
     "google-map-react": "~1.0.9",

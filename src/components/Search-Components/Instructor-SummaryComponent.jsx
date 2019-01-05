@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {setMapAddress} from '../../redux/actions/setMapAddress'
 import Geocode from "react-geocode";
-import {Col, Row} from 'react-bootstrap'
+import {Col} from 'react-bootstrap'
 import {setCoordinates} from '../../redux/actions/setCoordinates'
 
 const updateCoordinates = (address, setCoordinates) =>
