@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import map from 'lodash/map'
-import {FormGroup, FormControl, DropdownButton, Dropdown, ButtonGroup, Col, Row} from 'react-bootstrap'
+import {FormGroup, FormControl, DropdownButton, Modal, Button, ButtonGroup, Col, Row} from 'react-bootstrap'
+import {setShowFilter} from '../../redux/actions/setShowFilter'
 
 const FilterDropDown = props => {
     return (
@@ -29,11 +30,15 @@ const FilterDropDown = props => {
                         From
                     </Row>
                     <FormGroup className = "filter-regular">
-                    <FormControl onClick = {(e) => {e.preventDefault()
-                                                    e.stopPropagation()
-                                                    document.getElementById("filter-dropdown").setAttribute("aria-expanded", "true")
-                        }} className = "filter-regular" type="text" placeholder="Address" />
-                    </FormGroup>                    
+                    <FormControl className = "filter-regular" type="text" placeholder="Address" />
+                    </FormGroup>
+                <Row className = "filter-sub-title">
+                    <br />
+                    Zip Code
+                </Row>
+                    <FormGroup className = "filter-regular">
+                    <FormControl className = "filter-regular" type="text" placeholder="Zip" />
+                    </FormGroup>      
             <Row className = "filter-title">
                 Rating:
             </Row>
@@ -44,18 +49,17 @@ const FilterDropDown = props => {
 
 const SearchFilter = props => {
     return (
-        <ButtonGroup justified>
-            <DropdownButton           
-                bsSize="large"
-                title = "Advanced Search"
-                id = "filter-dropdown"
-            >
+        <div style = {{width: '100%', margin: '0 auto 10px'}}>
+            <Button bsSize = "large" block style = {{color: 'gray'}} onClick={() => props.setShowFilter(true)}> 
+                Advanced Search
+            </Button>
+
+            <Modal show={props.showFilter} onHide={() => props.setShowFilter(false)}>
                 <Col className = "filter-selection">
                     <FilterDropDown />
                 </Col>
-            </DropdownButton>
-        </ButtonGroup>
-        
+            </Modal>
+        </div>        
     )
 }
 
@@ -64,7 +68,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	
+	setShowFilter: show => dispatch(setShowFilter(show))
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

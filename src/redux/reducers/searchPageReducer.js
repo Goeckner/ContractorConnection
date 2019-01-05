@@ -66,10 +66,21 @@ export const instructorList = (state = instructors, action) => {
         return state
     }
   }
+
+  export const showFilter = (state = false, action) => 
+  {
+    switch (action.type) {
+      case 'SET_SHOW_FILTER':
+        return action.payload
+      default:
+        return state
+    }
+  }
   
   export default combineReducers({
     instructorList,
     Coordinates,
     SearchCriteria,
-    Address
+    Address,
+    showFilter
   })
