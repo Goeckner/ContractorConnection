@@ -23,6 +23,12 @@ const instructors = [
     {id: 20, name: 'Steve Jobs', email: 'sj@apple.com', location: 'Seattle, Washington', company: 'Apple', lat: 47.6062095, lng: -122.3320708}
 ]
 
+const defaultFilter = {
+  distance: "No Max",
+  location: "",
+  rating: 0
+}
+
 var defaultCoordinates = {
   center: {
     lat: 38.7931,
@@ -76,11 +82,33 @@ export const instructorList = (state = instructors, action) => {
         return state
     }
   }
+
+  export const tempFilter = (state = defaultFilter, action) =>
+  {
+    switch (action.type) {
+      case 'SET_TEMP_FILTER':
+        return action.payload
+      default:
+        return state
+    }
+  }
+
+  export const activeFilter = (state = defaultFilter, action) =>
+  {
+    switch (action.type) {
+      case 'SET_ACTIVE_FILTER':
+        return action.payload
+      default:
+        return state
+    }
+  }
   
   export default combineReducers({
     instructorList,
     Coordinates,
     SearchCriteria,
     Address,
-    showFilter
+    showFilter,
+    tempFilter,
+    activeFilter
   })
