@@ -23,7 +23,8 @@ const InstructorsList = props =>
                 </tbody>
             </Table>
             <Modal show = {props.showInstructor} 
-                   onHide = {() => props.setShowInstructor(false)}>
+                   onHide = {() => props.setShowInstructor(false)}
+                   bsSize = "large">
                 <Modal.Header closeButton/>
                 <Modal.Body>
                     <InstructorModal instructor = {props.filteredInstructors.find(o => o.id === props.selectedInstructor)}/>
