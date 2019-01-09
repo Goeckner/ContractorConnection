@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import {FormGroup, FormControl, ButtonToolbar, Modal, Button, ButtonGroup, Row} from 'react-bootstrap'
 import Rating from 'react-rating'
 import {setShowInstructor} from '../../redux/actions/setShowInstructor'
-import { instructorList } from '../../redux/reducers/searchPageReducer'
 
 const InstructorModal = props => {
     return (

@@ -3,32 +3,19 @@ import { connect } from 'react-redux'
 import GoogleMapReact from 'google-map-react'
 import getFilteredInstructorList from '../../redux/selectors/getFilteredInstructorList'
 import map from 'lodash/map'
-
-const bindResizeListener = (map, maps, bounds) => {
-    maps.event.addDomListenerOnce(map, 'idle', () => {
-        maps.event.addDomListener(window, 'resize', () => {
-            map.fitBounds(bounds);
-        })
-    })
-}
-  
-const apiIsLoaded = (map, maps) => {
-    if (map) {
-        const bounds = new maps.LatLngBounds();
-        map.fitBounds(bounds);
-        bindResizeListener(map, maps, bounds);
-    }
-}
+import {setSelectedInstructor} from '../../redux/actions/setSelectedInstructor'
+import {setShowInstructor} from '../../redux/actions/setShowInstructor'
 
 const Marker = props => {
     return (
-        <div className="google-maps-marker">
+        <div onClick = {() => {props.args.setSelectedInstructor(props.instructor.id)
+                               props.args.setShowInstructor(true)}}
+             className="google-maps-marker"
+        >
             <div className="marker-top">
                 {props.instructor.name}
             </div>
-            <div className='marker-bottom'>
-
-            </div>
+            <div className='marker-bottom' />
         </div>
     )
 }
@@ -36,7 +23,11 @@ const Marker = props => {
 const MapComponent = props => 
 {
     const allMarkers = map(props.filteredInstructors, inst =>
-        <Marker lat={inst.lat} lng={inst.lng} instructor={inst}/>
+        <Marker lat={inst.lat} 
+                lng={inst.lng} 
+                instructor={inst}
+                args = {props}
+        />
     )
 
     return (
@@ -56,10 +47,12 @@ const MapComponent = props =>
 }
 
 const mapStateToProps = state => ({
-    ...state, filteredInstructors: getFilteredInstructorList(state)
+    ...state.searchPage, filteredInstructors: getFilteredInstructorList(state)
 })
 
 const mapDispatchToProps = dispatch => ({
+    setSelectedInstructor: selected => dispatch(setSelectedInstructor(selected)),
+    setShowInstructor: showi => dispatch(setShowInstructor(showi))
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

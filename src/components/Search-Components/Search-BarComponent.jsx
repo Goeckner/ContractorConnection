@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {Button, ButtonToolbar, FormControl, Col} from 'react-bootstrap'
+import {FormControl, Col} from 'react-bootstrap'
 import {setSearchCriteria} from '../../redux/actions/setSearch'
 
 

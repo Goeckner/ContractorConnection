@@ -28,6 +28,10 @@
   overflow-y: auto;
 }
 
+.google-maps-marker:hover, .marker-top:hover {
+  background: white
+}
+
 .marker-top {
   width: 130px;
   height: 40px;
