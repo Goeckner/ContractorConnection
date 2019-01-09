@@ -12,7 +12,7 @@ const SearchBar = props => {
                 <FormControl
                   bsSize="large"
                   type="text"
-                  placeholder="Search for an instructor"
+                  placeholder="Search by instructor/location"
                   onChange={(e)=>props.setSearch(e.target.value)}
                 >
                 </FormControl>

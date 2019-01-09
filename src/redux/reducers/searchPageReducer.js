@@ -102,6 +102,26 @@ export const instructorList = (state = instructors, action) => {
         return state
     }
   }
+
+  export const showInstructor = (state = false, action) => 
+  {
+    switch (action.type) {
+      case 'SET_SHOW_INSTRUCTOR':
+        return action.payload
+      default:
+        return state
+    }
+  }
+
+  export const selectedInstructor = (state = -1, action) =>
+  {
+    switch (action.type) {
+      case 'SET_SELECTED_INSTRUCTOR':
+        return action.payload
+      default:
+        return state
+    }
+  }
   
   export default combineReducers({
     instructorList,
@@ -110,5 +130,7 @@ export const instructorList = (state = instructors, action) => {
     Address,
     showFilter,
     tempFilter,
-    activeFilter
+    activeFilter,
+    showInstructor,
+    selectedInstructor
   })
