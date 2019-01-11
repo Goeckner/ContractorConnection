@@ -56,3 +56,15 @@
   border-right: 10px solid transparent;
   border-top: 20px solid lightgray;
 }
+
+.instructor-profile-name {
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+}
+
+.instructor-profile-picture {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

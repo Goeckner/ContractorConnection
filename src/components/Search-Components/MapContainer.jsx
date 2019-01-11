@@ -3,13 +3,40 @@ import { connect } from 'react-redux'
 import GoogleMapReact from 'google-map-react'
 import getFilteredInstructorList from '../../redux/selectors/getFilteredInstructorList'
 import map from 'lodash/map'
+import Geocode from "react-geocode";
 import {setSelectedInstructor} from '../../redux/actions/setSelectedInstructor'
 import {setShowInstructor} from '../../redux/actions/setShowInstructor'
+import {setMapAddress} from '../../redux/actions/setMapAddress'
+import {setCoordinates} from '../../redux/actions/setCoordinates'
+
+const updateCoordinates = (address, setCoordinates) =>
+{
+    Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
+
+    Geocode.enableDebug();
+
+    Geocode.fromAddress(address).then(
+        response => {
+            const { lat, lng } = response.results[0].geometry.location;
+            setCoordinates({center:{lat: lat, lng: lng}, zoom: 15})
+            console.log(lat, lng)
+        },
+        error => {
+            console.error(error);
+        }
+    );
+}
 
 const Marker = props => {
+    const handleClick = () => {
+        props.args.setMapAddress(props.instructor.location)
+        updateCoordinates(props.instructor.location, props.args.setCoordinates)
+        props.args.setSelectedInstructor(props.instructor.id)
+        props.args.setShowInstructor(true)
+    }
+
     return (
-        <div onClick = {() => {props.args.setSelectedInstructor(props.instructor.id)
-                               props.args.setShowInstructor(true)}}
+        <div onClick = {() => {handleClick()}}
              className="google-maps-marker"
         >
             <div className="marker-top">
@@ -52,7 +79,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     setSelectedInstructor: selected => dispatch(setSelectedInstructor(selected)),
-    setShowInstructor: showi => dispatch(setShowInstructor(showi))
+    setShowInstructor: showi => dispatch(setShowInstructor(showi)),
+    setMapAddress: address => dispatch(setMapAddress(address)),
+    setCoordinates: coordinates => dispatch(setCoordinates(coordinates))
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
