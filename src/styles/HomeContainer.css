@@ -14,8 +14,16 @@
   }
 
   .Carousel {
-    width: 50%;
-    height: 600px;
+    width: 45%;
+    height: 40%;
     margin: auto;
     padding: 20px;
+  }
+
+  .ListGroup {
+    width: 27%;
+    margin: auto;
+  }
+  .resource1 {
+    font-style: italic;
   }

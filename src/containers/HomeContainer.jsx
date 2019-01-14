@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
 import { Carousel } from 'react-bootstrap'
+import { ListGroup } from 'react-bootstrap'
+import { ListGroupItem } from 'react-bootstrap'
 import React from 'react'
 
 const HomeContainer = props => (
@@ -20,6 +22,13 @@ const HomeContainer = props => (
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+      </div>
+      <div className="ListGroup">
+      <ListGroup>
+        <ListGroupItem header="Why CCW is important" bsStyle="info" href="#">ccw.com</ListGroupItem>
+        <ListGroupItem header="Firearm Training Tips" bsStyle="info" href="#">cctraining.com</ListGroupItem>
+        <ListGroupItem header="Firearms, Inclusion, and Diversity" bsStyle="info" href="#">gunnetwork.com</ListGroupItem>
+      </ListGroup>
       </div>
     </div>
 )
