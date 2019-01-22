@@ -97,11 +97,11 @@ const SearchFilter = props => {
                             stop = {5}/>
                     <br />
                     <ButtonGroup className = "filter-regular">
-                        {/* TODO: Connect this button, and the Rating component itself to a reducer */}
                         <Button bsSize = "small"
                                 onClick = {() => {changeTempRating(0)}}
                                 >Reset</Button>
                     </ButtonGroup>
+                    {props.activeFilter.location}
             </div>
         )
     }

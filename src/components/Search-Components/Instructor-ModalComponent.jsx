@@ -8,7 +8,7 @@ const InstructorModal = props => {
     return (
         <div>
             <Row>
-                <Col xs={12} md={6} className = "instructor-profile-picture">
+                <Col xs={12} md={10} className = "instructor-profile-picture">
                     <Image width = {150}
                            height = {150}
                            alt = "150x150"
@@ -21,6 +21,15 @@ const InstructorModal = props => {
                     {props.instructor.name}
                 </Col>
             </Row>
+            <Row>
+                <Col xs={7} md={6}>
+                    hello
+                </Col>
+                <Col xs={7} md={6}>
+                    
+                </Col>
+            </Row>
+            
         </div>
     )
 }
