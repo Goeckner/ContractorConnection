@@ -16,7 +16,7 @@ import TrainingPage from './TrainingPage'
 class App extends Component {
   render() {
     const { history } = this.props
-    
+
     return (
       <div>
         <ConnectedRouter history={history}>
