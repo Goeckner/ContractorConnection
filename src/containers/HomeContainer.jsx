@@ -25,9 +25,9 @@ const HomeContainer = props => (
       </div>
       <div className="ListGroup">
       <ListGroup>
-        <ListGroupItem header="Why CCW is important" bsStyle="info" href="#">ccw.com</ListGroupItem>
-        <ListGroupItem header="Firearm Training Tips" bsStyle="info" href="#">cctraining.com</ListGroupItem>
-        <ListGroupItem header="Firearms, Inclusion, and Diversity" bsStyle="info" href="#">gunnetwork.com</ListGroupItem>
+        <ListGroupItem header="US Concealed Carry Association" bsStyle="info" href="https://www.usconcealedcarry.com/">usconcealedcarry.com</ListGroupItem>
+        <ListGroupItem header="Armed and Diverse" bsStyle="info" href="https://www.nationalreview.com/2016/08/concealed-carry-race-sex/">nationalreview.com</ListGroupItem>
+        <ListGroupItem header="10 Tips for Concealed Carry Beginners" bsStyle="info" href="http://concealednation.org/2014/07/10-tips-for-concealed-carry-beginners-and-friendly-reminders-for-experts/">concealednation.org</ListGroupItem>
       </ListGroup>
       </div>
     </div>
