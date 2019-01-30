@@ -3,15 +3,16 @@ import { Navbar, Nav } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { setActivePage } from '../redux/actions/rootActions'
+import { setInstructorList } from '../redux/actions/fetchinstructors'
 import fetch from 'node-fetch'
 
 const Header = props => {
 
   const getTrainers = props => {
     if(props.searchPage.instructorList === undefined || props.searchPage.instructorList.length == 0){
-      fetch("http://localhost:3001/trainers")
-        .then(res => res.text())
-        .then(body => console.log(body));
+      fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
+        .then(res => res.json())
+        .then(json => props.setInstructorList(json));
     }
   }
 
@@ -75,6 +76,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setActivePage: page => dispatch(setActivePage(page)),
+  setInstructorList: instructors => dispatch(setInstructorList(instructors)),
 })
 
 const withRouterAndConnect = connect(mapStateToProps, mapDispatchToProps)
