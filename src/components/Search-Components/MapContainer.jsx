@@ -31,7 +31,7 @@ const Marker = props => {
     const handleClick = () => {
         props.args.setMapAddress(props.instructor.address)
         //updateCoordinates(props.instructor.location, props.args.setCoordinates)
-        props.args.setCoordinates({center:{lat: props.instructor.latitude, lng: props.instructor.longitude}, zoom: 15})
+        props.args.setCoordinates({center:{lat: parseFloat(props.instructor.latitude), lng: parseFloat(props.instructor.longitude)}, zoom: 15})
         props.args.setSelectedInstructor(props.instructor.id)
         props.args.setShowInstructor(true)
     }
@@ -51,8 +51,8 @@ const Marker = props => {
 const MapComponent = props => 
 {
     const allMarkers = map(props.filteredInstructors, inst =>
-        <Marker lat={inst.latitude} 
-                lng={inst.longitude} 
+        <Marker lat={parseFloat(inst.latitude)} 
+                lng={parseFloat(inst.longitude)} 
                 instructor={inst}
                 args = {props}
         />

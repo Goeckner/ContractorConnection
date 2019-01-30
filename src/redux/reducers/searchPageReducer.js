@@ -122,6 +122,16 @@ export const instructorList = (state = [], action) => {
         return state
     }
   }
+
+  export const instructorsLoaded = (state = false, action) =>
+  {
+    switch (action.type) {
+      case 'SET_INSTRUCTORS_LOADED':
+        return action.payload
+      default:
+        return state
+    }
+  }
   
   export default combineReducers({
     instructorList,
