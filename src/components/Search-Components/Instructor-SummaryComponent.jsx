@@ -28,8 +28,9 @@ const updateCoordinates = (address, setCoordinates) =>
 const InstructorSummary = props =>
 {
     const handleClick = () => {
-        props.setMapAddress(props.instructor.location)
-        updateCoordinates(props.instructor.location, props.setCoordinates)
+        props.setMapAddress(props.instructor.address)
+        //updateCoordinates(props.instructor.address, props.setCoordinates)
+        props.setCoordinates({center:{lat: props.instructor.latitude, lng: props.instructor.longitude}, zoom: 15})
         props.setSelectedInstructor(props.instructor.id)
         props.setShowInstructor(true)
     }
@@ -49,7 +50,7 @@ const InstructorSummary = props =>
                 </Col>
                 <Col xs = {3}>
                     <span>
-                        {props.instructor.location}
+                        {props.instructor.address}, {props.instructor.state}
                     </span>
                 </Col>
             </td>

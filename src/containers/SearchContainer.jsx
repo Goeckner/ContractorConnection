@@ -15,7 +15,7 @@ const SearchContainer = props => {
 
 				<SearchBar />
 
-				<Col md="6" className="map-filter">
+				<Col md={6} className="map-filter">
 					<SearchFilter />
 				</Col>
 				
