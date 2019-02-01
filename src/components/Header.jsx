@@ -33,7 +33,7 @@ const Header = props => {
           <Nav>
             <Navbar.Brand>
             <Link to="/instructors">
-                <div className="navItem" onClick = {() => {getTrainers(props)}}>
+                <div className="navItem">
                   Instructors
                 </div>
               </Link>
