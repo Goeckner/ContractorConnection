@@ -11,8 +11,6 @@ import thunk from 'redux-thunk'
 import rootReducer from './redux/reducers/rootReducer'
 require('dotenv').config({path: '../'})
 
-console.log(process.env)
-
 const history = createBrowserHistory()
 
 export default function configureStore() {
