@@ -5,6 +5,7 @@
   "dependencies": {
     "dotenv": "~6.1.0",
     "node-fetch": "~2.3.0",
+    "react-player": "~1.9.3",
     "react-rating": "~1.6.2"
   },
   "devDependencies": {
