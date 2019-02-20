@@ -11,7 +11,7 @@ import HomeContainer from './HomeContainer'
 import LoginContainer from './Login'
 import SearchContainer from './SearchContainer'
 import SignUpContainer from './SignUp'
-import TrainingPage from './TrainingPage'
+import TrainingContainer from './TrainingContainer';
 
 class App extends Component {
   render() {
@@ -25,7 +25,7 @@ class App extends Component {
             <Switch>
               <Route component={HomeContainer} exact path="/" />
               <Route component={SearchContainer} exact path="/instructors" />
-              <Route component={TrainingPage} exact path="/training" />
+              <Route component={TrainingContainer} exact path="/training" />
               <Route component={LoginContainer} exact path="/login" />
               <Route component={SignUpContainer} exact path="/sign-up" />
             </Switch>
