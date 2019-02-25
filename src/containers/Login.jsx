@@ -7,12 +7,11 @@ const LoginContainer = props => {
   
   return (
     <div>
-      <Button href = "http://localhost:3001/auth/google">
-        <Image  width = {50}
-                height = {50}
-                alt = "50x50"
+      <Button href = "https://localhost:3001/auth/google">
+        <Image  width = {150}
+                height = {150}
+                alt = "150x150"
                 src = {require("../googlelogo.png")}/>
-        Sign in with Google
       </Button>
     </div>
   )

@@ -8,14 +8,6 @@ import fetch from 'node-fetch'
 
 const Header = props => {
 
-  const getTrainers = props => {
-    if(props.searchPage.instructorList === undefined || props.searchPage.instructorList.length == 0){
-      fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
-        .then(res => res.json())
-        .then(json => props.setInstructorList(json));
-    }
-  }
-
   return (
     <header>
       <Navbar className="row headerContainer">
