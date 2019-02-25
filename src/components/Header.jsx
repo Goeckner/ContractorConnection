@@ -56,13 +56,6 @@ const Header = props => {
                 </div>
               </Link>
             </Navbar.Brand>
-            <Navbar.Brand>
-              <Link to="/sign-up">
-                <div className="navItem">
-                  Sign Up
-                </div>
-              </Link>
-            </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
