@@ -2,17 +2,39 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { ControlLabel, Form, FormGroup, Col, Button, FormControl, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import {GoogleLogin, GoogleLogout} from 'react-google-login';
 
 const LoginContainer = props => {
   
+  const responseGoogle = (response) => {
+    console.log(response)
+  }
+
   return (
     <div>
-      <Button href = "https://localhost:3001/auth/google">
+      {/* <Button href = "https://localhost:3001/auth/google">
         <Image  width = {150}
                 height = {150}
                 alt = "150x150"
                 src = {require("../googlelogo.png")}/>
-      </Button>
+      </Button> */}
+
+      <GoogleLogin
+        className = "Google-Sign-In"
+        clientId={process.env.REACT_APP_GOOGLE_ID}
+        render={renderProps => (
+          <Button onClick={renderProps.onClick}>
+            <Image  width = {150}
+            height = {150}
+            alt = "150x150"
+            src = {require("../googlelogo.png")}/>
+          </Button>
+        )}    
+        buttonText="Login using Google"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+      />
+
     </div>
   )
 	// <Form horizontal className="loginForm">
