@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { ControlLabel, Form, FormGroup, Col, Button, FormControl, Image } from 'react-bootstrap'
+import { ControlLabel, Grid, FormGroup, Col, Button, Row, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 const LoginContainer = props => {
   
@@ -10,32 +11,62 @@ const LoginContainer = props => {
     console.log(response)
   }
 
+  const responseFacebook = (response) => {
+    console.log(response);
+  }
+
   return (
-    <div>
-      {/* <Button href = "https://localhost:3001/auth/google">
-        <Image  width = {150}
-                height = {150}
-                alt = "150x150"
-                src = {require("../googlelogo.png")}/>
-      </Button> */}
-
-      <GoogleLogin
-        className = "Google-Sign-In"
-        clientId={process.env.REACT_APP_GOOGLE_ID}
-        render={renderProps => (
-          <Button onClick={renderProps.onClick}>
-            <Image  width = {150}
-            height = {150}
-            alt = "150x150"
-            src = {require("../googlelogo.png")}/>
-          </Button>
-        )}    
-        buttonText="Login using Google"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-      />
-
-    </div>
+    <Grid>
+      <Col>
+        <Row style={{textAlign: 'center', margin: 'auto', color: 'gray', fontSize: '36px'}}>
+          Sign in with one of the following
+        </Row>
+        <Row style={{textAlign: 'center', margin: 'auto', padding: '20px'}}>
+          <GoogleLogin
+            className = "Google-Sign-In"
+            clientId={process.env.REACT_APP_GOOGLE_ID}
+            render={renderProps => (
+              <Button 
+                onClick={renderProps.onClick} 
+                style = {{backgroundColor: 'lightgray'}}
+              >
+                <Image
+                  width = {150}
+                  height = {150}
+                  alt = "150x150"
+                  src = {require("../googlelogo.png")}
+                />
+              </Button>
+            )}
+            buttonText="Login using Google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+          />
+        </Row>
+        <Row  style={{textAlign: 'center', margin: 'auto', padding: '20px'}}>
+          <FacebookLogin
+            appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+            autoLoad = {false}
+            reau
+            callback={responseFacebook}
+            render={renderProps => (
+              <button
+                onClick={renderProps.onClick}
+                style = {{backgroundColor: 'lightgray', borderRadius: '5px'}}
+              >
+                <Image
+                  width = {160}
+                  height = {160}
+                  alt = "160x160"
+                  src = {require("../facebook.png")}
+                />
+              </button>
+            )} 
+          />
+        </Row>
+      </Col>    
+    </Grid>
+    
   )
 	// <Form horizontal className="loginForm">
   //   <FormGroup controlId="formHorizontalEmail">
