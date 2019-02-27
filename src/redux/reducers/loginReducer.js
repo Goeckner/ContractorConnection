@@ -10,6 +10,17 @@ export const showLogin = (state = false, action) =>
     }
   }
 
+export const currentuser = (state = null, action) => 
+  {
+    switch(action.type) {
+      case 'SET_CURRENT_USER':
+        return action.payload
+      default:
+        return state
+    }
+  }
+
   export default combineReducers({
     showLogin,
+    currentuser
   })

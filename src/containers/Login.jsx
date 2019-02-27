@@ -4,15 +4,19 @@ import { ControlLabel, Grid, FormGroup, Col, Button, Row, Image } from 'react-bo
 import { Link } from 'react-router-dom'
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import { setCurrentUser } from '../redux/actions/setCurrentUser'
+import { setShowLogin } from '../redux/actions/setShowLogin'
 
 const LoginContainer = props => {
   
   const responseGoogle = (response) => {
-    console.log(response)
+    props.setCurrentUser(response)
+    props.setShowLogin(false)
   }
 
   const responseFacebook = (response) => {
-    console.log(response);
+    props.setCurrentUser(response)
+    props.setShowLogin(false)
   }
 
   return (
@@ -110,6 +114,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
+  setShowLogin: showl => dispatch(setShowLogin(showl)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

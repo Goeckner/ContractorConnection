@@ -49,21 +49,32 @@ const Header = props => {
                   Login
                 </div>
               </Link> */}
+              {console.log(props.login)}
+                {!props.login.currentUser ?
               <div>
-                <div 
+                  <div 
+                    className="navItem" 
+                    style = {{color: 'white'}}
+                    onClick={() => {props.setShowLogin(true)}}
+                  >
+                    Login
+                  </div>
+              </div>              
+                :
+                <div
                   className="navItem" 
                   style = {{color: 'white'}}
-                  onClick={() => {props.setShowLogin(true)}}
                 >
-                  Login
+                  Someone is logged in
                 </div>
+                }
+
                 <Modal show={props.login.showLogin} onHide={() => {props.setShowLogin(false)}}>
                   <Modal.Header closeButton />
                   <Modal.Body>
                     <LoginContainer />
                   </Modal.Body>
                 </Modal>
-              </div>              
             </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
