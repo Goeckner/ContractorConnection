@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux'
 import Question from './Question-Component'
 import AnswerList from './Answer-ListComponent'
-import quizData from '../../questions';
 
 const Quiz = props => {
 

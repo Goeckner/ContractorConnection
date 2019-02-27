@@ -5,17 +5,15 @@ import quizData from '../../questions';
 
 const Video = props => {
 
-    return (
-        <div>
-            {console.log(quizData)}
-            {console.log(props)}
-            <ReactPlayer url={quizData[props.quizNum].video} /> 
-        </div>
-    )
+        return (
+           <div>
+              <ReactPlayer url={quizData[props.quizNum].video} /> 
+          </div>
+        )
 }
 
 const mapStateToProps = state => ({
-    ...state.trainingPage,
+    ...state.trainingPage
 })
 
 const mapDispatchToProps = dispatch => ({

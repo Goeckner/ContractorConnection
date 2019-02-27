@@ -4,15 +4,15 @@ import quizData from '../../questions';
 
 const Question = props => {
 
-    return (
-        <div>
-            <h2>{quizData[props.quizNum].questions[props.questionNum]}</h2>
-        </div>
-    )
+        return (
+            <div>
+                <h2>{quizData[props.quizNum].questions[props.questionNum]}</h2>
+            </div>
+        )
 }
 
 const mapStateToProps = state => ({
-    ...state.trainingPage,
+    ...state.trainingPage
 })
 
 const mapDispatchToProps = dispatch => ({

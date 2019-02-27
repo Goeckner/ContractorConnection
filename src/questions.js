@@ -9,7 +9,7 @@ var quizData = [
       ],
       video: "https://youtu.be/UW28j_V3dSI",
       correct: [
-        1,3,0,2,1
+        0,0,0,0,0
       ],
       answers: [
         ["this",
@@ -46,7 +46,7 @@ var quizData = [
       ],
       video: "https://youtu.be/Z4EtsoYKQ0U",
       correct: [
-        1,3,0,2,1
+        0,0,0,0,0
       ],
       answers: [
         ["this",
@@ -83,7 +83,7 @@ var quizData = [
       ],
       video: "https://youtu.be/H9DQeH8wTAM",
       correct: [
-        1,3,0,2,1
+        0,0,0,0,0
       ],
       answers: [
         ["this",
@@ -120,7 +120,7 @@ var quizData = [
       ],
       video: "https://youtu.be/H9DQeH8wTAM",
       correct: [
-        1,3,0,2,1
+        0,0,0,0,0
       ],
       answers: [
         ["this",
