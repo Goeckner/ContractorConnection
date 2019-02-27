@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { ControlLabel, Grid, FormGroup, Col, Button, Row, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { setShowLogin } from '../redux/actions/setShowLogin'
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { setCurrentUser } from '../redux/actions/setCurrentUser'
@@ -20,14 +21,14 @@ const LoginContainer = props => {
   }
 
   return (
-    <Grid>
+    <Grid style={{width:'100%'}}>
       <Col>
-        <Row style={{color: 'gray', fontSize: '36px'}}>
+        <Row style={{textAlign: 'center', margin:'auto', color: 'gray', fontSize: '36px'}}>
           Sign in with one of the following
         </Row>
-        <Row style={{padding: '20px'}}>
+        <Row style={{textAlign: 'center', margin: 'auto', padding: '20px'}}>
           <GoogleLogin
-            style={{float: 'left'}}
+            style={{padding:'20px'}}
             className = "Google-Sign-In"
             clientId={process.env.REACT_APP_GOOGLE_ID}
             render={renderProps => (
@@ -47,8 +48,10 @@ const LoginContainer = props => {
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           />
+        </Row>
+        <Row style={{textAlign: 'center', margin: 'auto', padding: '20px'}}>
           <FacebookLogin
-          style={{float: 'right'}}
+            style={{padding:'20px'}}
             appId={process.env.REACT_APP_FACEBOOK_APP_ID}
             autoLoad = {false}
             callback={responseFacebook}
