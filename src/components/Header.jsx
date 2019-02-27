@@ -1,20 +1,14 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import LoginContainer from '../containers/Login.jsx'
 import { setActivePage } from '../redux/actions/rootActions'
 import { setInstructorList } from '../redux/actions/fetchinstructors'
+import { setShowLogin } from '../redux/actions/setShowLogin'
 import fetch from 'node-fetch'
 
 const Header = props => {
-
-  const getTrainers = props => {
-    if(props.searchPage.instructorList === undefined || props.searchPage.instructorList.length == 0){
-      fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
-        .then(res => res.json())
-        .then(json => props.setInstructorList(json));
-    }
-  }
 
   return (
     <header>
@@ -50,18 +44,37 @@ const Header = props => {
           </Nav>
           <Nav pullRight>
             <Navbar.Brand>
-              <Link to="/login">
+              {/* <Link to="/login">
                 <div className="navItem">
                   Login
                 </div>
-              </Link>
-            </Navbar.Brand>
-            <Navbar.Brand>
-              <Link to="/sign-up">
-                <div className="navItem">
-                  Sign Up
+              </Link> */}
+              {console.log(props.login)}
+                {!props.login.currentUser ?
+              <div>
+                  <div 
+                    className="navItem" 
+                    style = {{color: 'white'}}
+                    onClick={() => {props.setShowLogin(true)}}
+                  >
+                    Login
+                  </div>
+              </div>              
+                :
+                <div
+                  className="navItem" 
+                  style = {{color: 'white'}}
+                >
+                  Someone is logged in
                 </div>
-              </Link>
+                }
+
+                <Modal show={props.login.showLogin} onHide={() => {props.setShowLogin(false)}}>
+                  <Modal.Header closeButton />
+                  <Modal.Body>
+                    <LoginContainer />
+                  </Modal.Body>
+                </Modal>
             </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
@@ -77,6 +90,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setActivePage: page => dispatch(setActivePage(page)),
   setInstructorList: instructors => dispatch(setInstructorList(instructors)),
+  setShowLogin: showl => dispatch(setShowLogin(showl)),
 })
 
 const withRouterAndConnect = connect(mapStateToProps, mapDispatchToProps)

@@ -22,7 +22,7 @@ const SearchFilter = props => {
 
         console.log(body)
 
-        fetch('http://localhost:3001/trainers/filter', {
+        fetch('https://localhost:3001/trainers/filter', {
             method: 'post',
             body:    JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' },
