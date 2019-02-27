@@ -49,8 +49,8 @@ const Header = props => {
                   Login
                 </div>
               </Link> */}
-              {console.log(props.login)}
-                {!props.login.currentUser ?
+              {console.log(props.login.currentUser)}
+              {!props.login.currentUser ?
               <div>
                   <div 
                     className="navItem" 
@@ -61,11 +61,19 @@ const Header = props => {
                   </div>
               </div>              
                 :
-                <div
-                  className="navItem" 
-                  style = {{color: 'white'}}
-                >
-                  Someone is logged in
+                <div>
+                  <div
+                    className="navItem" 
+                    style = {{color: 'white'}}
+                  >
+                    {props.login.currentUser.name}
+                  </div>
+                  <div
+                    className="navItem" 
+                    style = {{color: 'white'}}
+                  >
+
+                  </div>
                 </div>
                 }
 

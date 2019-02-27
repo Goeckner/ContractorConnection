@@ -10,12 +10,22 @@ import { setShowLogin } from '../redux/actions/setShowLogin'
 const LoginContainer = props => {
   
   const responseGoogle = (response) => {
-    props.setCurrentUser(response)
+    const newUser = {
+      email: response.profileObj.email,
+      name: response.profileObj.name,
+      picture: response.profileObj.imageUrl
+    }
+    props.setCurrentUser(newUser)
     props.setShowLogin(false)
   }
 
   const responseFacebook = (response) => {
-    props.setCurrentUser(response)
+    const newUser = {
+      email: response.email,
+      name: response.name,
+      picture: response.picture.data.url
+    }
+    props.setCurrentUser(newUser)
     props.setShowLogin(false)
   }
 
@@ -53,6 +63,7 @@ const LoginContainer = props => {
             style={{padding:'20px'}}
             appId={process.env.REACT_APP_FACEBOOK_APP_ID}
             autoLoad = {false}
+            fields="name,email,picture"
             callback={responseFacebook}
             render={renderProps => (
               <button
