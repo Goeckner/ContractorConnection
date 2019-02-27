@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { ControlLabel, Grid, FormGroup, Col, Button, Row, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { setShowLogin } from '../redux/actions/setShowLogin'
 import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { setCurrentUser } from '../redux/actions/setCurrentUser'
