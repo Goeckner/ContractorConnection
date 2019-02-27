@@ -18,11 +18,12 @@ const LoginContainer = props => {
   return (
     <Grid>
       <Col>
-        <Row style={{textAlign: 'center', margin: 'auto', color: 'gray', fontSize: '36px'}}>
+        <Row style={{color: 'gray', fontSize: '36px'}}>
           Sign in with one of the following
         </Row>
-        <Row style={{textAlign: 'center', margin: 'auto', padding: '20px'}}>
+        <Row style={{padding: '20px'}}>
           <GoogleLogin
+            style={{float: 'left'}}
             className = "Google-Sign-In"
             clientId={process.env.REACT_APP_GOOGLE_ID}
             render={renderProps => (
@@ -42,12 +43,10 @@ const LoginContainer = props => {
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
           />
-        </Row>
-        <Row  style={{textAlign: 'center', margin: 'auto', padding: '20px'}}>
           <FacebookLogin
+          style={{float: 'right'}}
             appId={process.env.REACT_APP_FACEBOOK_APP_ID}
             autoLoad = {false}
-            reau
             callback={responseFacebook}
             render={renderProps => (
               <button

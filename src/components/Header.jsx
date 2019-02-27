@@ -1,9 +1,11 @@
 import React from 'react'
-import { Navbar, Nav } from 'react-bootstrap'
+import { Navbar, Nav, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import LoginContainer from '../containers/Login.jsx'
 import { setActivePage } from '../redux/actions/rootActions'
 import { setInstructorList } from '../redux/actions/fetchinstructors'
+import { setShowLogin } from '../redux/actions/setShowLogin'
 import fetch from 'node-fetch'
 
 const Header = props => {
@@ -42,11 +44,26 @@ const Header = props => {
           </Nav>
           <Nav pullRight>
             <Navbar.Brand>
-              <Link to="/login">
+              {/* <Link to="/login">
                 <div className="navItem">
                   Login
                 </div>
-              </Link>
+              </Link> */}
+              <div>
+                <div 
+                  className="navItem" 
+                  style = {{color: 'white'}}
+                  onClick={() => {props.setShowLogin(true)}}
+                >
+                  Login
+                </div>
+                <Modal show={props.login.showLogin} onHide={() => {props.setShowLogin(false)}}>
+                  <Modal.Header closeButton />
+                  <Modal.Body>
+                    <LoginContainer />
+                  </Modal.Body>
+                </Modal>
+              </div>              
             </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
@@ -62,6 +79,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setActivePage: page => dispatch(setActivePage(page)),
   setInstructorList: instructors => dispatch(setInstructorList(instructors)),
+  setShowLogin: showl => dispatch(setShowLogin(showl)),
 })
 
 const withRouterAndConnect = connect(mapStateToProps, mapDispatchToProps)
