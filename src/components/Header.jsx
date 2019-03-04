@@ -1,11 +1,12 @@
 import React from 'react'
-import { Navbar, Nav, Modal } from 'react-bootstrap'
+import { NavDropdown, MenuItem, Navbar, Nav, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import LoginContainer from '../containers/Login.jsx'
 import { setActivePage } from '../redux/actions/rootActions'
 import { setInstructorList } from '../redux/actions/fetchinstructors'
 import { setShowLogin } from '../redux/actions/setShowLogin'
+import { setCurrentUser } from '../redux/actions/setCurrentUser'
 import fetch from 'node-fetch'
 
 const Header = props => {
@@ -44,11 +45,6 @@ const Header = props => {
           </Nav>
           <Nav pullRight>
             <Navbar.Brand>
-              {/* <Link to="/login">
-                <div className="navItem">
-                  Login
-                </div>
-              </Link> */}
               {console.log(props.login.currentUser)}
               {!props.login.currentUser ?
               <div>
@@ -59,22 +55,24 @@ const Header = props => {
                   >
                     Login
                   </div>
-              </div>              
+              </div>
                 :
-                <div>
-                  <div
-                    className="navItem" 
-                    style = {{color: 'white'}}
-                  >
-                    {props.login.currentUser.name}
-                  </div>
-                  <div
-                    className="navItem" 
-                    style = {{color: 'white'}}
-                  >
-
-                  </div>
-                </div>
+                  <NavDropdown title={props.login.currentUser.name} id="basic-nav-dropdown">
+                      <Navbar.Brand>
+                        <Link to="/sign-up">                    
+                          <div>
+                            Account
+                          </div>
+                        </Link>
+                      </Navbar.Brand>
+                      <Navbar.Brand>
+                        <Link to="/">
+                          <div onClick={() => {props.setCurrentUser(null)}}>
+                            Logout
+                          </div>
+                        </Link>
+                      </Navbar.Brand>
+                  </NavDropdown>
                 }
 
                 <Modal show={props.login.showLogin} onHide={() => {props.setShowLogin(false)}}>
@@ -99,6 +97,7 @@ const mapDispatchToProps = dispatch => ({
   setActivePage: page => dispatch(setActivePage(page)),
   setInstructorList: instructors => dispatch(setInstructorList(instructors)),
   setShowLogin: showl => dispatch(setShowLogin(showl)),
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
 })
 
 const withRouterAndConnect = connect(mapStateToProps, mapDispatchToProps)
