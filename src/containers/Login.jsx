@@ -1,4 +1,5 @@
 import React from 'react'
+import fetch from 'node-fetch'
 import { connect } from 'react-redux'
 import { ControlLabel, Grid, FormGroup, Col, Button, Row, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -8,25 +9,75 @@ import { setCurrentUser } from '../redux/actions/setCurrentUser'
 import { setShowLogin } from '../redux/actions/setShowLogin'
 
 const LoginContainer = props => {
+  const loginFetch = async (newUser) => {
+    var body = {
+      name: newUser.name,
+      email: newUser.email
+    }
+
+    return await fetch('https://localhost:3001/auth', {
+      method: 'post',
+      body:    JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(res => res.json())
+  }
+
+  const loginCall = async (newUser) => {
+    var resp = await loginFetch(newUser)
+    if(resp.id == -1)
+    {
+      console.log("INVALID NAME/EMAIL LOGIN")
+      return {id: -1, new: false}
+    }
+    else{
+      return resp
+    }
+  }
   
-  const responseGoogle = (response) => {
+  const responseGoogle = async (response) => {
     const newUser = {
       email: response.profileObj.email,
       name: response.profileObj.name,
-      picture: response.profileObj.imageUrl
+      picture: response.profileObj.imageUrl,
+      id: -1
     }
-    props.setCurrentUser(newUser)
-    props.setShowLogin(false)
+    var resp = await loginCall(newUser)
+    if(resp.id == -1){
+      props.setShowLogin(false)
+      alert("Invalid Login credintials")
+    }
+    else{
+      newUser.id = resp.id
+      props.setCurrentUser(newUser)
+      props.setShowLogin(false)
+      if(resp.new == true){
+        alert("New User!")
+      }
+    }    
   }
 
   const responseFacebook = (response) => {
     const newUser = {
       email: response.email,
       name: response.name,
-      picture: response.picture.data.url
+      picture: response.picture.data.url,
+      id: -1
     }
-    props.setCurrentUser(newUser)
-    props.setShowLogin(false)
+    var resp = loginCall(newUser)
+    
+    if(resp.id == -1){
+      props.setShowLogin(false)
+      alert("Invalid Login credintials")
+    }
+    else{
+      newUser.id = resp.id
+      props.setCurrentUser(newUser)
+      props.setShowLogin(false)
+      if(newUser.new == true){
+        alert("New User!")
+      }
+    }    
   }
 
   return (
