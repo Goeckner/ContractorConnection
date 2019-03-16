@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import {FormGroup, FormControl, ButtonToolbar, Row, Button, Image, Col} from 'react-bootstrap'
 
 const NewUserModal = props => {
-
+    <div>
+        Welcome {props.name}!
+    </div>
 }
 
 const mapStateToProps = state => ({

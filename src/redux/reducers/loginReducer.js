@@ -10,6 +10,16 @@ export const showLogin = (state = false, action) =>
     }
   }
 
+export const showNewModal = (state = false, action) => 
+  {
+    switch (action.type) {
+      case 'SET_SHOW_NEW_MODAL':
+        return action.payload
+      default:
+        return state
+    }
+  }
+
 export const currentUser = (state = null, action) => 
   {
     switch(action.type) {
@@ -22,5 +32,6 @@ export const currentUser = (state = null, action) =>
 
   export default combineReducers({
     showLogin,
-    currentUser
+    currentUser,
+    showNewModal
   })
