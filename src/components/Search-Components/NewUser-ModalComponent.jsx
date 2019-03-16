@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {FormGroup, FormControl, ButtonToolbar, Row, Button, Image, Col} from 'react-bootstrap'
+import {Grid} from 'react-bootstrap'
 
 const NewUserModal = props => {
-    <div>
-        Welcome {props.name}!
-    </div>
+    return (
+        <Grid style = {{width:'100%'}}>
+
+        </Grid>
+    )
 }
 
 const mapStateToProps = state => ({
-    ...state.loginReducer
+    ...state
 })
 
 const mapDispatchToProps = dispatch => ({

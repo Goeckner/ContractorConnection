@@ -3,10 +3,12 @@ import { NavDropdown, MenuItem, Navbar, Nav, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import LoginContainer from '../containers/Login.jsx'
+import NewUserModal from './Search-Components/NewUser-ModalComponent'
 import { setActivePage } from '../redux/actions/rootActions'
 import { setInstructorList } from '../redux/actions/fetchinstructors'
 import { setShowLogin } from '../redux/actions/setShowLogin'
 import { setCurrentUser } from '../redux/actions/setCurrentUser'
+import {setShowNewModal} from '../redux/actions/setShowNewModal'
 import fetch from 'node-fetch'
 
 const Header = props => {
@@ -81,6 +83,12 @@ const Header = props => {
                     <LoginContainer />
                   </Modal.Body>
                 </Modal>
+                <Modal show = {props.login.showNewModal} onHide={() => {props.setShowNewModal(false)}}>
+                  <Modal.Header closeButton />
+                  <Modal.Body>
+                    <NewUserModal />
+                  </Modal.Body>
+                </Modal>
             </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
@@ -98,6 +106,7 @@ const mapDispatchToProps = dispatch => ({
   setInstructorList: instructors => dispatch(setInstructorList(instructors)),
   setShowLogin: showl => dispatch(setShowLogin(showl)),
   setCurrentUser: user => dispatch(setCurrentUser(user)),
+  setShowNewModal: shown => dispatch(setShowNewModal(shown)),
 })
 
 const withRouterAndConnect = connect(mapStateToProps, mapDispatchToProps)

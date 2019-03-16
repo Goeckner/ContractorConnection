@@ -7,6 +7,7 @@ import {GoogleLogin, GoogleLogout} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { setCurrentUser } from '../redux/actions/setCurrentUser'
 import { setShowLogin } from '../redux/actions/setShowLogin'
+import { setShowNewModal } from '../redux/actions/setShowNewModal'
 
 const LoginContainer = props => {
   const loginFetch = async (newUser) => {
@@ -51,20 +52,18 @@ const LoginContainer = props => {
       newUser.id = resp.id
       props.setCurrentUser(newUser)
       props.setShowLogin(false)
-      if(resp.new == true){
-        alert("New User!")
-      }
+      props.setShowNewModal(resp.new)
     }    
   }
 
-  const responseFacebook = (response) => {
+  const responseFacebook = async (response) => {
     const newUser = {
       email: response.email,
       name: response.name,
       picture: response.picture.data.url,
       id: -1
     }
-    var resp = loginCall(newUser)
+    var resp = await loginCall(newUser)
     
     if(resp.id == -1){
       props.setShowLogin(false)
@@ -74,9 +73,7 @@ const LoginContainer = props => {
       newUser.id = resp.id
       props.setCurrentUser(newUser)
       props.setShowLogin(false)
-      if(newUser.new == true){
-        alert("New User!")
-      }
+      props.setShowNewModal(resp.new)
     }    
   }
 
@@ -144,6 +141,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
   setShowLogin: showl => dispatch(setShowLogin(showl)),
+  setShowNewModal: shown => dispatch(setShowNewModal(shown)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
