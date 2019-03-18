@@ -1,8 +1,13 @@
 .User_Modal {
-    text-align: center
+    text-align: center;
+    width: 100%;
+    color: gray;
 }
 
 .User_Modal_Title {
     font-size: 24px;
-    color: gray;
+}
+
+.User_Modal_Subtext {
+    font-size: 18px;
 }
