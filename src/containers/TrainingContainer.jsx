@@ -15,7 +15,7 @@ const TrainingContainer = props => {
           Diversity Training Complete!
         </h1>
         <h3>
-          Your trainer profile will now show up on the Instructors page.
+          Your instructor profile will now show up on the Instructors page!
         </h3>
       </div>
     </div>

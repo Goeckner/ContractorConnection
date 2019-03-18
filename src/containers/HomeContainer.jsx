@@ -4,24 +4,30 @@ import React from 'react'
 
 const HomeContainer = props => (
     <div className="App">
-      <header className="App-header">Firearm-Inclusion-Training</header>
+      <header className="App-header"><h1>Firearm-Inclusion-Training</h1></header>
+      <div class="info1">
+          <h3>Prospective students:</h3>
+          <h4>Go to the Instructors page to find inclusive instructors in your area!</h4>
+          <h3>Instructors:</h3>
+          <h4>Log in to create a profile, then complete Training to show up on the Instructors page!</h4>
+        </div>
       <div className="Carousel">
         <Carousel>
-          <Carousel.Item>
-            <img width={900} height={500} alt="900x500" src={require('../diversity_hands.jpg')} />
+          <Carousel.Item class="item">
+            <img width={900} height={500} alt="900x500" src={require('../training.jpg')} />
             <Carousel.Caption>
-              <h3>Firearms Training</h3>
+              <h1>Firearms Training</h1>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item>
+          <Carousel.Item class="item">
             <img width={900} height={500} alt="900x500" src={require('../diversity_hands.jpg')} />
             <Carousel.Caption>
-              <h3>Inclusion and Diversity</h3>
+              <h1>Inclusion and Diversity</h1>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
       </div>
-      <div className="ListGroup">
+      <div className="ListGroup"><h3 class="resources">Resources:</h3>
       <ListGroup>
         <ListGroupItem header="US Concealed Carry Association" bsStyle="info" href="https://www.usconcealedcarry.com/">usconcealedcarry.com</ListGroupItem>
         <ListGroupItem header="Armed and Diverse" bsStyle="info" href="https://www.nationalreview.com/2016/08/concealed-carry-race-sex/">nationalreview.com</ListGroupItem>
