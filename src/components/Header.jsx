@@ -86,7 +86,7 @@ const Header = props => {
                 <Modal show = {props.login.showNewModal} onHide={() => {props.setShowNewModal(false)}}>
                   <Modal.Header closeButton />
                   <Modal.Body>
-                    <NewUserModal />
+                    <NewUserModal user = {props.login.currentUser} />
                   </Modal.Body>
                 </Modal>
             </Navbar.Brand>
