@@ -5,7 +5,7 @@ import quizData from '../../questions';
 const Question = props => {
 
         return (
-            <div>
+            <div text-align='center'>
                 <h2>{quizData[props.quizNum].questions[props.questionNum]}</h2>
             </div>
         )

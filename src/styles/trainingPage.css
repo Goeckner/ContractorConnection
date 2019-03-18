@@ -1,4 +1,45 @@
-/*.quiz {
+
+.answer_item {
+    background-color: whitesmoke;
+    border-radius: 15px;
+    margin-right: 50%;
+}
+.answer_item:hover{
+    background: skyblue;
+    cursor: pointer;
+}
+.completed_training {
+    margin: 100px 100px;
+    width: 50%;
+    height: 100%;
     text-align: center;
+    background-color: lightblue;
+    border-radius: 15px;
+
+}
+.root {
     margin: auto;
-}*/
+    justify-content: center;
+}
+.info {
+    text-align: center;
+}
+.row {
+    display: flex;
+}
+.col {
+    padding: 50px;
+}
+.col2 {
+    padding-top: 50px;
+}
+.videoquiz {
+    margin:auto;
+}
+.info {
+    background-color: lightblue;
+    width: 50%;
+    margin-left: 300px;
+    border-radius: 15px;
+    padding: 2px;
+}

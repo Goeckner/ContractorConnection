@@ -7,7 +7,9 @@ const Video = props => {
 
         return (
            <div>
-              <ReactPlayer url={quizData[props.quizNum].video} /> 
+              <ReactPlayer url={quizData[props.quizNum].video}
+                           height='280px'
+                           width='490px'/> 
           </div>
         )
 }

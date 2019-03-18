@@ -1,7 +1,5 @@
 import { connect } from 'react-redux'
-import { Carousel } from 'react-bootstrap'
-import { ListGroup } from 'react-bootstrap'
-import { ListGroupItem } from 'react-bootstrap'
+import { Carousel, ListGroup, ListGroupItem } from 'react-bootstrap'
 import React from 'react'
 
 const HomeContainer = props => (

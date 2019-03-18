@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Button } from 'react-bootstrap';
 import {setQuizNum} from '../../redux/actions/setQuizNum'
 import {setQuestionNum} from '../../redux/actions/setQuestionNum'
 import {setAnswerCorrect} from '../../redux/actions/setAnswerCorrect'
@@ -8,6 +9,7 @@ import quizData from '../../questions'
 const AnswerItem = props => {
 
     const handleClick = (answer) => {
+        //increments answerCorrect if answer selected is correct
         if (answer == quizData[props.quizNum].answers[props.questionNum][quizData[props.quizNum].correct[props.questionNum]]) {
             props.setAnswerCorrect(props.answerCorrect + 1)
         }
@@ -25,10 +27,13 @@ const AnswerItem = props => {
     }
 
     return (
-        <div
+        <li>
+        <div class='answer_item'
+            
              onClick={(e)=>{handleClick(e.target.innerHTML)}}>
                 {props.answer}
         </div>
+        </li>
     )
 }
 

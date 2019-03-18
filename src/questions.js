@@ -1,21 +1,21 @@
 var quizData = [
     {
       questions: [
-        "Question 1",
-        "Question 2",
-        "Question 3",
-        "Question 4",
-        "Question 5",
+        "Question 1: How should LGBT people and minorities be treated when they show interest in being trained?",
+        "Question 2: Question 2",
+        "Question 3: q3",
+        "Question 4: q4",
+        "Question 5: q5",
       ],
       video: "https://youtu.be/UW28j_V3dSI",
       correct: [
-        0,0,0,0,0
+        3,0,0,0,0
       ],
       answers: [
-        ["this",
-        "that",
-        "this and that",
-        "none"],
+        ["a. They should be treated with respect",
+        "b. They should be treated with dignity",
+        "c. They should be treated with compassion",
+        "d. All of the above"],
         ["this",
         "that",
         "this and that",

@@ -3,4 +3,4 @@ export const setAnswerCorrect = answerCorrect => dispatch => {
       type: 'SET_ANSWER_CORRECT',
       payload: answerCorrect
     })
-  }
+}

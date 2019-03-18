@@ -9,13 +9,15 @@ const AnswerList = props => {
         i++;
         return <AnswerItem 
                     key={i}
-                    answer={answer} />
+                    answer={answer} 
+                    quizNum={props.quizNum} 
+                    questionNum={props.questionNum} />
     });
 
         return (
-            <div>
+            <ul class="list-unstyled">
                 {answers}
-            </div>
+            </ul>
         )
 }
 
