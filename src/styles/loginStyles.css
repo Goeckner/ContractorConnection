@@ -2,12 +2,24 @@
     text-align: center;
     width: 100%;
     color: gray;
+    margin: auto;
+    padding: 10px;
 }
 
 .User_Modal_Title {
     font-size: 24px;
+    margin: auto;
+    padding: 5px;
 }
 
 .User_Modal_Subtext {
     font-size: 18px;
+    margin: auto;
+    padding: 5px;
+}
+
+.User_Modal_Button {
+    font-size: 16px;
+    margin: auto;
+    padding: 5px;
 }

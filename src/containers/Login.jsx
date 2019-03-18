@@ -91,7 +91,7 @@ const LoginContainer = props => {
             render={renderProps => (
               <Button 
                 onClick={renderProps.onClick} 
-                style = {{backgroundColor: 'lightgray'}}
+                style = {{backgroundColor: 'lightgray', margin: "auto"}}
               >
                 <Image
                   width = {150}
@@ -116,7 +116,7 @@ const LoginContainer = props => {
             render={renderProps => (
               <button
                 onClick={renderProps.onClick}
-                style = {{backgroundColor: 'lightgray', borderRadius: '5px'}}
+                style = {{backgroundColor: 'lightgray', borderRadius: '5px', margin: "auto"}}
               >
                 <Image
                   width = {160}

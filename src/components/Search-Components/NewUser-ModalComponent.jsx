@@ -11,8 +11,8 @@ const NewUserModal = props => {
             <Row className = "User_Modal_Subtext">
                 Are you an instructor? If so please click the following link!
             </Row>
-            <Row className = "User_Modal_Buttons">
-                <Button>
+            <Row className = "User_Modal_Button">
+                <Button bsSize = "large">
                     Instructor
                 </Button>
             </Row>
