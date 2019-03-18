@@ -3,6 +3,7 @@
     background-color: whitesmoke;
     border-radius: 15px;
     margin-right: 50%;
+    font-size: 1.5em;
 }
 .answer_item:hover{
     background: skyblue;
@@ -37,4 +38,8 @@
     margin-left: 24%;
     border-radius: 15px;
     padding: 2px;
+}
+span {
+    margin-left: 18%;
+    font-size: 2em;
 }

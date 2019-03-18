@@ -24,11 +24,11 @@ const TrainingContainer = props => {
   return (
     <div class='root'>
       <div class='info'>
-        <h2>Diversity Training - Quiz {props.quizNum + 1} - Question {props.questionNum + 1}</h2>
-        <h5>This training consists of 4 quizs with 5 questions each. </h5>
-        <h5>Click on an answer to move onto the next question. </h5>
-        <h5>If you do not get at least 4 questions correct, the 
-        quiz will restart. Good Luck.</h5>
+        <h1>Diversity Training</h1>
+        <h4>This training consists of 4 quizs with 5 questions each. </h4>
+        <h4>Click on an answer to move onto the next question. </h4>
+        <h4>If you do not get at least 4 questions correct, the 
+        quiz will restart. Good Luck.</h4>
       </div>
       <div class='row'>
         <div class='col'>
@@ -38,6 +38,8 @@ const TrainingContainer = props => {
           <Quiz class='quiz' quizNum={props.quizNum} questionNum={props.questionNum} />
         </div>
       </div>
+      <span>Quiz: {props.quizNum + 1}/4</span>
+      <span>Question: {props.questionNum + 1}/5</span>
     </div>
   )
 }
