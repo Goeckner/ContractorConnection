@@ -8,7 +8,7 @@ const SearchBar = props => {
 
     return (
         <div>
-            <Col sm = {6} className="search-bar">
+            <Col className="search-bar">
                 <FormControl
                   bsSize="large"
                   type="text"

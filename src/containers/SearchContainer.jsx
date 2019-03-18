@@ -22,7 +22,10 @@ const SearchContainer = props => {
 
 			<Row className="search-utils" >
 
-				<SearchBar />
+				<Col md = {6}>
+					<SearchBar />
+				</Col>
+				
 
 				<Col md={6} className="map-filter">
 					<SearchFilter />
