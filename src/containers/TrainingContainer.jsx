@@ -38,8 +38,8 @@ const TrainingContainer = props => {
           <Quiz class='quiz' quizNum={props.quizNum} questionNum={props.questionNum} />
         </div>
       </div>
-      <span>Quiz: {props.quizNum + 1}/4</span>
-      <span>Question: {props.questionNum + 1}/5</span>
+      <span className = "training_span">Quiz: {props.quizNum + 1}/4</span>
+      <span className = "training_span">Question: {props.questionNum + 1}/5</span>
     </div>
   )
 }

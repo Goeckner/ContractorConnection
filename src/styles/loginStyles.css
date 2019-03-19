@@ -2,24 +2,28 @@
     text-align: center;
     width: 100%;
     color: gray;
-    margin: auto;
     padding: 10px;
 }
 
 .User_Modal_Title {
+    width: 100%;
+    text-align: center;
     font-size: 24px;
-    margin: auto;
+    margin-left: 2%;
     padding: 5px;
 }
 
 .User_Modal_Subtext {
+    width: 100%;
+    text-align: center;
     font-size: 18px;
-    margin: auto;
+    margin-left: 9%;
     padding: 5px;
 }
 
 .User_Modal_Button {
+    width: 100%;
     font-size: 16px;
-    margin: auto;
+    margin-left: 39%;
     padding: 5px;
 }

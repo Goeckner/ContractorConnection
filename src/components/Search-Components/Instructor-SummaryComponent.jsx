@@ -44,14 +44,14 @@ const InstructorSummary = props =>
                             {props.instructor.name}
                         </a>
                     </strong><br/>
-                    <span>
+                    <div>
                         {props.instructor.email}
-                    </span>
+                    </div>
                 </Col>
                 <Col xs = {3}>
-                    <span>
+                    <div>
                         {props.instructor.address}, {props.instructor.state}
-                    </span>
+                    </div>
                 </Col>
             </td>
         </tr>
