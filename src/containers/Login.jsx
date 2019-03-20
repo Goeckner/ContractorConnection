@@ -13,9 +13,10 @@ const LoginContainer = props => {
   const loginFetch = async (newUser) => {
     var body = {
       name: newUser.name,
-      email: newUser.email
+      email: newUser.email,
+      profilePicURL: newUser.picture
     }
-
+    console.log(body)
     return await fetch('http://localhost:3001/auth', {
       method: 'post',
       body:    JSON.stringify(body),
@@ -26,8 +27,7 @@ const LoginContainer = props => {
 
   const loginCall = async (newUser) => {
     var resp = await loginFetch(newUser)
-    if(resp.id == -1)
-    {
+    if(resp.id == -1){
       console.log("INVALID NAME/EMAIL LOGIN")
       return {id: -1, new: false}
     }
