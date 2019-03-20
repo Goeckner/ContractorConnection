@@ -12,7 +12,7 @@ import fetch from 'node-fetch'
 const SearchContainer = props => {
 	
 	if(props.instructorList === undefined || props.instructorList.length == 0){
-		fetch("https://localhost:3001/trainers", {'Content-Type': 'application/json'})
+		fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
 		  	.then(res => res.json())
 		  	.then(json => props.setInstructorList(json));
 	}

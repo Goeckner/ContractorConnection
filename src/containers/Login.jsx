@@ -16,7 +16,7 @@ const LoginContainer = props => {
       email: newUser.email
     }
 
-    return await fetch('https://localhost:3001/auth', {
+    return await fetch('http://localhost:3001/auth', {
       method: 'post',
       body:    JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
