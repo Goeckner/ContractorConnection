@@ -44,8 +44,60 @@ const renderClassInfoContainer = (classList, classObject, setClassList) => (
   </ListGroupItem>
 )
 
-const renderInstructorForm = (classList, setClassList) => (
-  <div>
+// const renderInstructorForm = (classList, setClassList) => (
+//   <div>
+//     <FormGroup>
+//       <ControlLabel>Email</ControlLabel>
+//       <FormControl type="email" placeholder="Email" />
+//     </FormGroup>
+
+//     <FormGroup>
+//       <ControlLabel>First Name</ControlLabel>
+//       <FormControl type="text" placeholder="Please enter first name" />
+//     </FormGroup>
+
+//     <FormGroup>
+//       <ControlLabel>Last Name</ControlLabel>
+//       <FormControl type="text" placeholder="Please enter last name" />
+//     </FormGroup>
+
+//     <FormGroup>
+//       <ControlLabel>Company Name (optional)</ControlLabel>
+//       <FormControl type="text" placeholder="Please enter company name" />
+//     </FormGroup>
+
+//     <FormGroup>
+//       <ListGroup className="class-list">
+//     {
+//       classList ?
+//         map(classList, classObject => (
+//             renderClassInfoContainer(classList, classObject, setClassList)
+//           ))
+//         : null
+//     }
+//       </ListGroup>
+//     </FormGroup>
+//     <Button bsStyle="success" onClick={() => setClassList(addClass(classList))}>Add a Class</Button>
+//   </div>
+// )
+
+const SignUpContainer = props => (
+	<Form horizontal className="loginForm">
+
+    <FormGroup>
+      <ControlLabel>Address</ControlLabel>
+      <FormControl type="text" placeholder="Address" />
+    </FormGroup>
+
+    <FormGroup>
+      <ControlLabel>City</ControlLabel>
+      <FormControl type="text" placeholder="City" />
+    </FormGroup>
+
+    <FormGroup>
+      <ControlLabel>State</ControlLabel>
+      <FormControl type="password" placeholder="State" />
+    </FormGroup>
     <FormGroup>
       <ControlLabel>Email</ControlLabel>
       <FormControl type="email" placeholder="Email" />
@@ -69,37 +121,17 @@ const renderInstructorForm = (classList, setClassList) => (
     <FormGroup>
       <ListGroup className="class-list">
     {
-      classList ?
-        map(classList, classObject => (
-            renderClassInfoContainer(classList, classObject, setClassList)
+      props.classList ?
+        map(props.classList, classObject => (
+            renderClassInfoContainer(props.classList, classObject, props.setClassList)
           ))
         : null
     }
       </ListGroup>
     </FormGroup>
-    <Button bsStyle="success" onClick={() => setClassList(addClass(classList))}>Add a Class</Button>
-  </div>
-)
+    <Button bsStyle="success" onClick={() => props.setClassList(addClass(props.classList))}>Add a Class</Button>
 
-const SignUpContainer = props => (
-	<Form horizontal className="loginForm">
-
-    <FormGroup>
-      <ControlLabel>Username</ControlLabel>
-      <FormControl type="text" placeholder="Username" />
-    </FormGroup>
-
-    <FormGroup>
-      <ControlLabel>Password</ControlLabel>
-      <FormControl type="password" placeholder="Password" />
-    </FormGroup>
-
-    <FormGroup>
-      <ControlLabel>Confirm Password</ControlLabel>
-      <FormControl type="password" placeholder="Confirm Password" />
-    </FormGroup>
-
-    <FormGroup>
+    {/* <FormGroup>
       <ControlLabel>Are you an instructor?</ControlLabel>
       <div>
         <Radio
@@ -120,7 +152,7 @@ const SignUpContainer = props => (
       </div>
     </FormGroup>
 
-    {props.isInstructor ? renderInstructorForm(props.classList, props.setClassList) : null}
+    {props.isInstructor ? renderInstructorForm(props.classList, props.setClassList) : null}*/}
 
     <FormGroup className="pull-right">
         <Button bsStyle="primary" type="submit">Sign in</Button>
