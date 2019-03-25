@@ -161,7 +161,7 @@ const SignUpContainer = props => (
 )
 
 const mapStateToProps = state => ({
-  ...state.signUp,
+  ...state,
 })
 
 const mapDispatchToProps = dispatch => ({
