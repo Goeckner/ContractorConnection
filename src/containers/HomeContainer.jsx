@@ -4,7 +4,7 @@ import React from 'react'
 
 const HomeContainer = props => (
     <div className="App">
-      <header className="App-header"><h1>Firearm-Inclusion-Training</h1></header>
+      <header className="App-header"><span class='title_span'>Inclusive Firearms Training</span></header>
       <div class="info1">
           <h3>Prospective students:</h3>
           <h4>Go to the Instructors page to find inclusive instructors in your area!</h4>
@@ -16,13 +16,13 @@ const HomeContainer = props => (
           <Carousel.Item class="item">
             <img width={900} height={500} alt="900x500" src={require('../training.jpg')} />
             <Carousel.Caption>
-              <h1>Firearms Training</h1>
+              <span class='carousel_span'>Firearms Training</span>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item class="item">
             <img width={900} height={500} alt="900x500" src={require('../diversity_hands.jpg')} />
             <Carousel.Caption>
-              <h1>Inclusion and Diversity</h1>
+              <span class='carousel_span'>Inclusion and Diversity</span>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

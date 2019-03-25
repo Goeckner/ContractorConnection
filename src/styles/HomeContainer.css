@@ -37,3 +37,12 @@
     background-color: whitesmoke;
     border-radius: 7px;
   }
+  .title_span {
+    font-size: 160%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  .carousel_span {
+    font-size: 185%;
+    font-style: bold;
+    color: lightyellow;
+  }

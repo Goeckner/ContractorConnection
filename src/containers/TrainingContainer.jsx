@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Grid,Col,Row } from 'react-bootstrap';
+import { ProgressBar } from 'react-bootstrap'
 import Video from '../components/Training-Components/Video-Component'
 import Quiz from '../components/Training-Components/Quiz-Component'
 
@@ -25,7 +25,7 @@ const TrainingContainer = props => {
     <div class='root'>
       <div class='info'>
         <h1>Diversity Training</h1>
-        <h4>This training consists of 4 quizs with 5 questions each. </h4>
+        <h4>This training consists of 4 quizzes with 5 questions each. </h4>
         <h4>Click on an answer to move onto the next question. </h4>
         <h4>If you do not get at least 4 questions correct, the 
         quiz will restart. Good Luck.</h4>
@@ -38,8 +38,7 @@ const TrainingContainer = props => {
           <Quiz class='quiz' quizNum={props.quizNum} questionNum={props.questionNum} />
         </div>
       </div>
-      <span className = "training_span">Quiz: {props.quizNum + 1}/4</span>
-      <span className = "training_span">Question: {props.questionNum + 1}/5</span>
+      <div className = "training_bar">Quizzes Completed: <ProgressBar now={props.quizNum * 25} label={`${props.quizNum} / 4`} /></div>
     </div>
   )
 }

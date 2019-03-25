@@ -10,8 +10,13 @@
     cursor: pointer;
 }
 .completed_training {
+    padding: 5px;
     margin-top: 100px;
+    margin-left: 25%;
     text-align: center;
+    width: 50%;
+    border-radius: 10px;
+    background-color: lightblue;
 }
 .root {
     margin: auto;
@@ -39,7 +44,8 @@
     border-radius: 15px;
     padding: 2px;
 }
-.training_span {
+.training_bar {
     margin-left: 18%;
+    margin-right: 20%;
     font-size: 2em;
 }
