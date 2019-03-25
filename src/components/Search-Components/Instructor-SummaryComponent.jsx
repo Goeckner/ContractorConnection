@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {setMapAddress} from '../../redux/actions/setMapAddress'
+import Rating from 'react-rating'
 import Geocode from "react-geocode";
 import {Col} from 'react-bootstrap'
 import {setCoordinates} from '../../redux/actions/setCoordinates'
@@ -38,7 +39,7 @@ const InstructorSummary = props =>
     return (
         <tr >
             <td onClick={()=>{handleClick()}}>
-                <Col xs={9}>
+                <Col xs={7}>
                     <strong>
                         <a>
                             {props.instructor.name}
@@ -48,7 +49,17 @@ const InstructorSummary = props =>
                         {props.instructor.email}
                     </div>
                 </Col>
-                <Col xs = {3}>
+                <Col xs = {5}>
+                    <div>
+                        <Rating
+                            readonly
+                            quiet
+                            emptySymbol="glyphicon glyphicon-star-empty"                            
+                            fullSymbol="glyphicon glyphicon-star"
+                            className = "filter-regular" 
+                            initialRating = {props.instructor.rating} 
+                        />
+                    </div>
                     <div>
                         {props.instructor.address}, {props.instructor.state}
                     </div>

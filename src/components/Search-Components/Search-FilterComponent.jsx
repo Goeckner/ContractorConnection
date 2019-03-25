@@ -145,7 +145,9 @@ const SearchFilter = props => {
                         Minimum Instructor Rating
                     </Row>
                     <Rating onChange = {(value) => changeTempRating(value)} 
-                            className = "filter-regular" 
+                            className = "filter-regular"
+                            emptySymbol="glyphicon glyphicon-star-empty"                            
+                            fullSymbol="glyphicon glyphicon-star"
                             initialRating = {props.tempFilter.rating} 
                             stop = {5}/>
                     <br />
