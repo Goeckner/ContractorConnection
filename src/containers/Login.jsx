@@ -25,6 +25,13 @@ const LoginContainer = props => {
       .then(res => res.json())
   }
 
+  const trainerFetch = async (id) => {
+    var url = "http://localhost:3001/trainers/"
+    url += id
+    return await fetch(url, {'Content-Type': 'application/json'})
+		  	.then(res => res.json())
+  }
+
   const loginCall = async (newUser) => {
     var resp = await loginFetch(newUser)
     if(resp.id == -1){
@@ -37,19 +44,24 @@ const LoginContainer = props => {
   }
   
   const responseGoogle = async (response) => {
-    const newUser = {
+    var newUser = {
       email: response.profileObj.email,
       name: response.profileObj.name,
       picture: response.profileObj.imageUrl,
       id: -1
     }
     var resp = await loginCall(newUser)
-    if(resp.id == -1){
+
+    if(resp.info == -1){
       props.setShowLogin(false)
       alert("Invalid Login credintials")
     }
     else{
-      newUser.id = resp.id
+      if(resp.info.isTrainer == 1)
+      {
+        resp.info = trainerFetch(resp.info.id)
+      }
+      newUser = resp
       props.setCurrentUser(newUser)
       props.setShowLogin(false)
       props.setShowNewModal(resp.new)
@@ -57,7 +69,7 @@ const LoginContainer = props => {
   }
 
   const responseFacebook = async (response) => {
-    const newUser = {
+    var newUser = {
       email: response.email,
       name: response.name,
       picture: response.picture.data.url,
@@ -65,12 +77,16 @@ const LoginContainer = props => {
     }
     var resp = await loginCall(newUser)
     
-    if(resp.id == -1){
+    if(resp.info == -1){
       props.setShowLogin(false)
       alert("Invalid Login credintials")
     }
     else{
-      newUser.id = resp.id
+      if(resp.info.isTrainer == 1)
+      {
+        resp.info = trainerFetch(resp.info.id)
+      }
+      newUser = resp
       props.setCurrentUser(newUser)
       props.setShowLogin(false)
       props.setShowNewModal(resp.new)

@@ -59,7 +59,7 @@ const Header = props => {
                   </div>
               </div>
                 :
-                  <NavDropdown title={props.login.currentUser.name} id="basic-nav-dropdown">
+                  <NavDropdown title={props.login.currentUser.info.name} id="basic-nav-dropdown">
                       <Navbar.Brand>
                         <Link to="/sign-up">                    
                           <div>

@@ -44,121 +44,90 @@ const renderClassInfoContainer = (classList, classObject, setClassList) => (
   </ListGroupItem>
 )
 
-// const renderInstructorForm = (classList, setClassList) => (
-//   <div>
-//     <FormGroup>
-//       <ControlLabel>Email</ControlLabel>
-//       <FormControl type="email" placeholder="Email" />
-//     </FormGroup>
+const SignUpContainer = props => {
+  return (
+    <div>
+      <fieldset disabled = {!props.login.editProfile}>
+        <Form horizontal className="loginForm">
 
-//     <FormGroup>
-//       <ControlLabel>First Name</ControlLabel>
-//       <FormControl type="text" placeholder="Please enter first name" />
-//     </FormGroup>
+          <FormGroup>
+            <ControlLabel>Address</ControlLabel>
+            <FormControl type="text" placeholder="Address" />
+          </FormGroup>
 
-//     <FormGroup>
-//       <ControlLabel>Last Name</ControlLabel>
-//       <FormControl type="text" placeholder="Please enter last name" />
-//     </FormGroup>
+          <FormGroup>
+            <ControlLabel>City</ControlLabel>
+            <FormControl type="text" placeholder="City" />
+          </FormGroup>
 
-//     <FormGroup>
-//       <ControlLabel>Company Name (optional)</ControlLabel>
-//       <FormControl type="text" placeholder="Please enter company name" />
-//     </FormGroup>
+          <FormGroup>
+            <ControlLabel>State</ControlLabel>
+            <FormControl type="text" placeholder="State" />
+          </FormGroup>
+          <FormGroup>
+            <ControlLabel>Email</ControlLabel>
+            <FormControl type="email" placeholder="Email" />
+          </FormGroup>
 
-//     <FormGroup>
-//       <ListGroup className="class-list">
-//     {
-//       classList ?
-//         map(classList, classObject => (
-//             renderClassInfoContainer(classList, classObject, setClassList)
-//           ))
-//         : null
-//     }
-//       </ListGroup>
-//     </FormGroup>
-//     <Button bsStyle="success" onClick={() => setClassList(addClass(classList))}>Add a Class</Button>
-//   </div>
-// )
+          <FormGroup>
+            <ControlLabel>Phone Number</ControlLabel>
+            <FormControl type="text" placeholder="Phone" />
+          </FormGroup>
 
-const SignUpContainer = props => (
-	<Form horizontal className="loginForm">
+          <FormGroup>
+            <ControlLabel>Zip Code</ControlLabel>
+            <FormControl type="text" placeholder="Zip" />
+          </FormGroup>
 
-    <FormGroup>
-      <ControlLabel>Address</ControlLabel>
-      <FormControl type="text" placeholder="Address" />
-    </FormGroup>
+          <FormGroup>
+            <ControlLabel>Company Name (optional)</ControlLabel>
+            <FormControl type="text" placeholder="Please enter company name" />
+          </FormGroup>
 
-    <FormGroup>
-      <ControlLabel>City</ControlLabel>
-      <FormControl type="text" placeholder="City" />
-    </FormGroup>
+          <FormGroup>
+            <ListGroup className="class-list">
+          {
+            props.classList ?
+              map(props.classList, classObject => (
+                  renderClassInfoContainer(props.classList, classObject, props.setClassList)
+                ))
+              : null
+          }
+            </ListGroup>
+          </FormGroup>
+          <Button bsStyle="success" onClick={() => props.setClassList(addClass(props.classList))}>Add a Class</Button>
 
-    <FormGroup>
-      <ControlLabel>State</ControlLabel>
-      <FormControl type="password" placeholder="State" />
-    </FormGroup>
-    <FormGroup>
-      <ControlLabel>Email</ControlLabel>
-      <FormControl type="email" placeholder="Email" />
-    </FormGroup>
+          {/* <FormGroup>
+            <ControlLabel>Are you an instructor?</ControlLabel>
+            <div>
+              <Radio
+                name="radioGroup"
+                inline onClick={() => props.setIsInstructor(true)}
+              >
+                Yes
+              </Radio>
+              <Radio
+                name="radioGroup"
+                inline onClick={() => {
+                  props.setIsInstructor(false)
+                  props.setClassList([])
+                }}
+              >
+                No
+              </Radio>
+            </div>
+          </FormGroup>
 
-    <FormGroup>
-      <ControlLabel>First Name</ControlLabel>
-      <FormControl type="text" placeholder="Please enter first name" />
-    </FormGroup>
+          {props.isInstructor ? renderInstructorForm(props.classList, props.setClassList) : null}*/}
 
-    <FormGroup>
-      <ControlLabel>Last Name</ControlLabel>
-      <FormControl type="text" placeholder="Please enter last name" />
-    </FormGroup>
-
-    <FormGroup>
-      <ControlLabel>Company Name (optional)</ControlLabel>
-      <FormControl type="text" placeholder="Please enter company name" />
-    </FormGroup>
-
-    <FormGroup>
-      <ListGroup className="class-list">
-    {
-      props.classList ?
-        map(props.classList, classObject => (
-            renderClassInfoContainer(props.classList, classObject, props.setClassList)
-          ))
-        : null
-    }
-      </ListGroup>
-    </FormGroup>
-    <Button bsStyle="success" onClick={() => props.setClassList(addClass(props.classList))}>Add a Class</Button>
-
-    {/* <FormGroup>
-      <ControlLabel>Are you an instructor?</ControlLabel>
-      <div>
-        <Radio
-          name="radioGroup"
-          inline onClick={() => props.setIsInstructor(true)}
-        >
-          Yes
-        </Radio>
-        <Radio
-          name="radioGroup"
-          inline onClick={() => {
-            props.setIsInstructor(false)
-            props.setClassList([])
-          }}
-        >
-          No
-        </Radio>
-      </div>
-    </FormGroup>
-
-    {props.isInstructor ? renderInstructorForm(props.classList, props.setClassList) : null}*/}
-
-    <FormGroup className="pull-right">
-        <Button bsStyle="primary" type="submit">Sign in</Button>
-    </FormGroup>
-  </Form>
-)
+          <FormGroup className="pull-right">
+              <Button bsStyle="primary" type="submit">Register</Button>
+          </FormGroup>
+        </Form>
+      </fieldset>
+    </div>
+  )
+}
 
 const mapStateToProps = state => ({
   ...state,
