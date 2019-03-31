@@ -40,9 +40,31 @@ export const editProfile = (state = false, action) =>
   }
 }
 
+export const shortDescLeft = (state = 512, action) =>
+{
+  switch(action.type) {
+    case 'SET_SHORT_DESC':
+      return action.payload
+    default:
+      return state
+  }
+}
+
+export const longDescLeft = (state = 4096, action) =>
+{
+  switch(action.type) {
+    case 'SET_LONG_DESC':
+      return action.payload
+    default:
+      return state
+  }
+}
+
   export default combineReducers({
     showLogin,
     currentUser,
     showNewModal,
-    editProfile
+    editProfile,
+    shortDescLeft,
+    longDescLeft,
   })
