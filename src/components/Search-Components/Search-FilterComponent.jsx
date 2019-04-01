@@ -20,8 +20,6 @@ const SearchFilter = props => {
             dist: props.tempFilter.distance
         }
 
-        console.log(body)
-
         fetch('http://localhost:3001/trainers/filter', {
             method: 'post',
             body:    JSON.stringify(body),
@@ -33,7 +31,6 @@ const SearchFilter = props => {
 
     const getFilteredInstList = () => {
         var latitude, longitude, err, done
-        console.log(document.getElementById("location-form").value)
         if(document.getElementById("location-form").value != ""){
             Geocode.setApiKey(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
 

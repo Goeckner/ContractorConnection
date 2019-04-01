@@ -6,6 +6,9 @@ import getFilteredInstructorList from '../../redux/selectors/getFilteredInstruct
 import InstructorModal from './Instructor-ModalComponent'
 import map from 'lodash/map'
 import {setShowInstructor} from '../../redux/actions/setShowInstructor'
+import {setActiveFilter} from '../../redux/actions/setActiveFilter'
+import {setTempFilter} from '../../redux/actions/setTempFilter'
+import {setInstructorList} from '../../redux/actions/fetchinstructors'
 
 const InstructorsList = props =>
 {
@@ -15,8 +18,46 @@ const InstructorsList = props =>
       />
     )
 
+    const resetFilters = () => {
+        props.setActiveFilter({
+            distance: "No Max",
+            location: "",
+            rating: 0
+        })
+
+        props.setTempFilter({
+            distance: "No Max",
+            location: "",
+            rating: 0
+        })
+
+        const body = 
+        {
+            rating: 0,
+            latitude: new String(0),
+            longitude: new String(0),
+            dist: "No Max"
+        }
+
+        fetch('http://localhost:3001/trainers/filter', {
+            method: 'post',
+            body:    JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' },
+        })
+            .then(res => res.json())
+            .then(json => props.setInstructorList(json));
+    }
+
     return (
         <div className="instructors-list-div">
+        {(props.activeFilter.rating && props.activeFilter.rating != 0) || (props.activeFilter.distance && props.activeFilter.distance != "No Max") ?
+        <button
+            onClick={() => 
+                resetFilters()
+            }
+        >clear filters</button>
+        : null
+        }
             <Table hover className="instructors-list">
                 <tbody>
                     {instructorCell}                    
@@ -41,7 +82,10 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setShowInstructor: showi => dispatch(setShowInstructor(showi))
+    setActiveFilter: active => dispatch(setActiveFilter(active)),
+    setShowInstructor: showi => dispatch(setShowInstructor(showi)),
+    setTempFilter: temp => dispatch(setTempFilter(temp)),
+    setInstructorList: instructors => dispatch(setInstructorList(instructors)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
