@@ -8,7 +8,7 @@ const NewUserModal = props => {
     return (
         <Grid className = "User_Modal">
             <Row className = "User_Modal_Title">
-                Welcome to Contractor Connection, {props.user.name}!
+                Welcome to Contractor Connection, {props.login.currentUser.info.name}!
             </Row>
             <Row className = "User_Modal_Subtext">
                 Are you an instructor? If so please click the following link!

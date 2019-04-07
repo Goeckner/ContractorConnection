@@ -51,7 +51,6 @@ const LoginContainer = props => {
       id: -1
     }
     var resp = await loginCall(newUser)
-
     if(resp.info == -1){
       props.setShowLogin(false)
       alert("Invalid Login credintials")
@@ -59,7 +58,8 @@ const LoginContainer = props => {
     else{
       if(resp.info.isTrainer == 1)
       {
-        resp.info = trainerFetch(resp.info.id)
+        resp.info = await trainerFetch(resp.info.id)
+        resp.info = resp.info[0]
       }
       newUser = resp
       props.setCurrentUser(newUser)
@@ -84,7 +84,8 @@ const LoginContainer = props => {
     else{
       if(resp.info.isTrainer == 1)
       {
-        resp.info = trainerFetch(resp.info.id)
+        resp.info = await trainerFetch(resp.info.id)
+        resp.info = resp.info[0]
       }
       newUser = resp
       props.setCurrentUser(newUser)

@@ -1,5 +1,25 @@
 import { combineReducers } from "redux";
 
+const defaultSignup = {
+  address: "",
+  city: "",
+  state: "",
+  phone: "",
+  zipcode: "",
+  company: "",
+  fullDesc: ""
+}
+
+export const signUpForm = (state = defaultSignup, action) =>
+{
+  switch(action.type) {
+    case 'SET_SIGN_UP_FORM':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export const showLogin = (state = false, action) => 
   {
     switch (action.type) {
@@ -67,4 +87,5 @@ export const longDescLeft = (state = 4096, action) =>
     editProfile,
     shortDescLeft,
     longDescLeft,
+    signUpForm,
   })
