@@ -8,6 +8,8 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { setCurrentUser } from '../redux/actions/setCurrentUser'
 import { setShowLogin } from '../redux/actions/setShowLogin'
 import { setShowNewModal } from '../redux/actions/setShowNewModal'
+import { setSignUpForm } from '../redux/actions/setSignUpForm'
+import { setClassList, setActiveClassList } from '../redux/actions/signUpActions'
 
 const LoginContainer = props => {
   const loginFetch = async (newUser) => {
@@ -42,6 +44,35 @@ const LoginContainer = props => {
       return resp
     }
   }
+
+  const getClasses = async (id) => {
+    var classes = await fetch("http://localhost:3001/classes/" + id, {'Content-Type': 'application/json'})
+      .then(res => res.json())
+
+    let idCounter = 0
+    const addClass = (classList, obj) => {
+      const newClassList = [
+        ...classList,
+        {
+          id: idCounter,
+          name: obj.className,
+          description: obj.classDesc,
+        }
+      ]
+      idCounter++
+    
+      return newClassList
+    }
+
+    var lists = []
+    classes.forEach(c => {
+      lists = addClass(lists, c)
+    });
+    console.log(lists)
+
+    props.setActiveClassList(lists)
+    props.setClassList(lists)
+  }
   
   const responseGoogle = async (response) => {
     var newUser = {
@@ -60,6 +91,19 @@ const LoginContainer = props => {
       {
         resp.info = await trainerFetch(resp.info.id)
         resp.info = resp.info[0]
+
+        var body = {
+          address: resp.info.address,
+          city: resp.info.city,
+          state: resp.info.state,
+          phone: resp.info.phone,
+          zipcode: resp.info.zipcode,
+          company: resp.info.company,
+          fullDesc: resp.info.fullDesc,
+        }
+    
+        props.setSignUpForm(body)
+        await getClasses(resp.info.id)
       }
       newUser = resp
       props.setCurrentUser(newUser)
@@ -86,6 +130,18 @@ const LoginContainer = props => {
       {
         resp.info = await trainerFetch(resp.info.id)
         resp.info = resp.info[0]
+
+        var body = {
+          address: resp.info.address,
+          city: resp.info.city,
+          state: resp.info.state,
+          phone: resp.info.phone,
+          zipcode: resp.info.zipcode,
+          company: resp.info.company,
+          fullDesc: resp.info.fullDesc,
+        }
+    
+        props.setSignUpForm(body)
       }
       newUser = resp
       props.setCurrentUser(newUser)
@@ -159,6 +215,9 @@ const mapDispatchToProps = dispatch => ({
   setCurrentUser: user => dispatch(setCurrentUser(user)),
   setShowLogin: showl => dispatch(setShowLogin(showl)),
   setShowNewModal: shown => dispatch(setShowNewModal(shown)),
+  setSignUpForm: signup => dispatch(setSignUpForm(signup)),
+  setClassList: classes => dispatch(setClassList(classes)),
+  setActiveClassList: aclasses => dispatch(setActiveClassList(aclasses)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

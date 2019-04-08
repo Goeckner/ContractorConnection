@@ -9,6 +9,15 @@ export const classList = (state = [], action) => {
   }
 }
 
+export const activeClassList = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_ACTIVE_CLASS_LIST':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export const isInstructor = (state = false, action) => {
   switch ( action.type ) {
     case 'SET_IS_INSTRUCTOR':
@@ -20,5 +29,6 @@ export const isInstructor = (state = false, action) => {
 
 export default combineReducers({
   classList,
-  isInstructor
+  isInstructor,
+  activeClassList,
 })

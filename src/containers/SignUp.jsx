@@ -2,51 +2,78 @@ import React from 'react'
 import {Redirect} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ControlLabel, Radio, Form, FormGroup, Button, FormControl, ListGroup, ListGroupItem } from 'react-bootstrap'
-import { setClassList, setIsInstructor } from '../redux/actions/signUpActions'
+import { setClassList, setActiveClassList, setIsInstructor } from '../redux/actions/signUpActions'
 import { setEditProfile } from '../redux/actions/setEditProfile'
+import { setSignUpForm } from '../redux/actions/setSignUpForm'
 import {setLongDesc} from '../redux/actions/setLongDesc'
+import { setCurrentUser } from '../redux/actions/setCurrentUser'
 import filter from 'lodash/filter'
 import Geocode from 'react-geocode'
 import map from 'lodash/map'
+import {withRouter} from 'react-router';
 
 
-let idCounter = 0
-const addClass = classList => {
+const addClass = (classList) => {
   const newClassList = [
     ...classList,
     {
-      id: idCounter,
+      id: classList.length,
       name: '',
       description: '',
     }
   ]
-  idCounter++
 
   return newClassList
 }
 
 const removeClass = (classList, classObject) => {
   const newClassList = filter(classList, classToRemove => classToRemove.id !== classObject.id)
+  newClassList.forEach(c => {
+    if(c.id > classObject.id){
+      newClassList[c.id-1].id--
+    }
+  });
 
   return newClassList
 }
 
-const renderClassInfoContainer = (classList, classObject, setClassList) => (
-  <ListGroupItem>
-    <Button bsStyle="danger" onClick={() => setClassList(removeClass(classList, classObject))}>Remove Class</Button>
-    <div className="class-item">
-      <FormGroup controlId="formControlsText">
-        <ControlLabel>Name of Class</ControlLabel>
-        <FormControl type="text" placeholder="ex: Intro to Handguns" />
-      </FormGroup>
+const renderClassInfoContainer = (classList, classObject, setClassList) => {
+  const updateClasses = (nod, value) => {
+    
+    var tempList = []
+    
+    tempList = classList
+    tempList.forEach(c => {
+      if(c.id == classObject.id){
+        if(nod == 0){
+          tempList[c.id].name = value
+        }
+        else if(nod == 1){
+          tempList[c.id].description = value
+        }
+      }
+    });
 
-      <FormGroup controlId="formControlsTextarea">
-        <ControlLabel>Class Description</ControlLabel>
-        <FormControl componentClass="textarea" style={{height: 100}}placeholder="Time, price, and short description" />
-      </FormGroup>
-    </div>
-  </ListGroupItem>
-)
+    console.log(tempList)
+    setClassList(tempList)
+  }
+
+  return (
+    <ListGroupItem>
+      <Button bsStyle="danger" onClick={() => setClassList(removeClass(classList, classObject))}>Remove Class</Button>
+      <div className="class-item">
+        <FormGroup controlId="formControlsText">
+          <ControlLabel>Name of Class</ControlLabel>
+          <FormControl onChange={(e)=>{updateClasses(0, e.target.value)}} defaultValue = {classList[classObject.id].name} type="text" placeholder="ex: Intro to Handguns" />
+        </FormGroup>
+        <FormGroup controlId="formControlsTextarea">
+          <ControlLabel>Class Description</ControlLabel>
+          <FormControl onChange={(e)=>{updateClasses(1, e.target.value)}} defaultValue = {classList[classObject.id].description} componentClass="textarea" style={{height: 100}}placeholder="Time, price, and short description" />
+        </FormGroup>
+      </div>
+    </ListGroupItem>
+  )
+}
 
 const SignUpContainer = props => {
 
@@ -60,15 +87,14 @@ const SignUpContainer = props => {
       .then(res => res.json())
 
      classes.forEach(c => {
-      var body = {
+      var bodys = {
         className: c.name,
         classDesc: c.description,
         trainerID: id
       }
-
       fetch(url, {
         method: 'post',
-        body: body,
+        body: JSON.stringify(bodys),
         headers: {'Content-Type': 'application/json'}
       })
         .then(res => res.json())
@@ -125,6 +151,7 @@ const SignUpContainer = props => {
   }
 
   const pullInfo = () => {
+    console.log("sql test", props.signUp)
     return {
       address: document.getElementById("sign_up_address").value,
       city: document.getElementById("sign_up_city").value,
@@ -137,9 +164,22 @@ const SignUpContainer = props => {
     }
   }
 
+  const loadInstInfo = (info) => {
+    var body = {
+      address: info.address,
+      city: info.city,
+      state: info.state,
+      phone: info.phone,
+      zipcode: info.zipcode,
+      company: info.company,
+      fullDesc: info.fullDesc,
+    }
+
+    props.setSignUpForm(body)
+  }
+
   const handleSubmit = async () => {
     var info = pullInfo()
-    props.setEditProfile(false)
     var coors = await getCoor(info.address, info.city, info.state)
 
     var body = {
@@ -159,51 +199,59 @@ const SignUpContainer = props => {
       numRatings: 0,
       quizes: 0
     }
+
     await refreshInst(body)
     await updateClasses(body.trainerID, info.classes)
+    props.setActiveClassList(info.classes)
+
     var usr = {
       info: await trainerFetch(props.login.currentUser.info.id),
       new: props.login.currentUser.new
     }
     usr.info = usr.info[0]
+    usr.info.isTrainer = 1
+
+    await props.setCurrentUser(usr)
+    loadInstInfo(body)    
 
     if(props.login.currentUser.info.isTrainer == 0){
-      usr.info.isTrainer = 1
       await fetch("http://localhost:3001/users/update/" + usr.info.id, {
         method: "put",
         headers: {'Content-Type': 'application/json'}
       })
         .then(res => res.json())
 
-      
+      props.setEditProfile(false)
+
+      props.history.push("/training")
     }
     else if(props.login.currentUser.info.isTrainer == 1){
-      
+      props.setEditProfile(false)
+
+      alert("Changes saved")
     }
   }
 
   const determineState = () => {
     if(props.login.currentUser) {
       if(props.login.currentUser.info.isTrainer == 1) {
-
-
         return (
           <div style={{textAlign: "center"}}>
             <div className="App-header" style={{padding: "10px"}}>
               Account Information
             </div>
             <FormGroup>
-              <ControlLabel style={{padding: "5px"}}>Edit Informatin?</ControlLabel>
+              <ControlLabel style={{padding: "5px"}}>Edit Information?</ControlLabel>
               <div>
                 <Radio
                   name="radioGroup"
-                  inline onClick={() => {}}
+                  inline onClick={() => {props.setEditProfile(true)}}
                 >
                   Yes
                 </Radio>
                 <Radio
                   name="radioGroup"
-                  inline onClick={() => {}}
+                  inline onClick={() => {props.setEditProfile(false)}}
                 >
                   No
                 </Radio>
@@ -216,7 +264,7 @@ const SignUpContainer = props => {
         if(props.login.editProfile == false){
           props.setEditProfile(true)
         }        
-        return (<div className="App-header" style={{padding: "10px"}}>Create Account</div>)
+        return (<div className="App-header" style={{padding: "10px"}}>Become Trainer</div>)
       }
     }
     else{
@@ -236,7 +284,7 @@ const SignUpContainer = props => {
       )
     }
   }
-  
+
   return (
     <div>
       {determineState()}
@@ -331,9 +379,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setClassList: classes => dispatch(setClassList(classes)),
+  setActiveClassList: aclasses => dispatch(setActiveClassList(aclasses)),
   setIsInstructor: bool => dispatch(setIsInstructor(bool)),
   setEditProfile: edit => dispatch(setEditProfile(edit)),
-  setLongDesc: lnum => dispatch(setLongDesc(lnum))
+  setLongDesc: lnum => dispatch(setLongDesc(lnum)),
+  setSignUpForm: signup => dispatch(setSignUpForm(signup)),
+  setCurrentUser: user => dispatch(setCurrentUser(user)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)
