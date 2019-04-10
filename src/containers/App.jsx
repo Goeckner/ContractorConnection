@@ -8,7 +8,6 @@ import { connect } from 'react-redux'
 import React from 'react/index'
 import Header from '../components/Header'
 import HomeContainer from './HomeContainer'
-import LoginContainer from './Login'
 import SearchContainer from './SearchContainer'
 import SignUpContainer from './SignUp'
 import TrainingContainer from './TrainingContainer';

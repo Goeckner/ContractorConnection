@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect'
 import { getInstructors, getSearchText } from './rootSelectors'
 import filter from 'lodash/filter'
-import sortBy from 'lodash/sortBy'
 import includes from 'lodash/includes'
 
 export default createSelector(

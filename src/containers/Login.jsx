@@ -1,9 +1,8 @@
 import React from 'react'
 import fetch from 'node-fetch'
 import { connect } from 'react-redux'
-import { ControlLabel, Grid, FormGroup, Col, Button, Row, Image } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-import {GoogleLogin, GoogleLogout} from 'react-google-login';
+import { Grid, Col, Button, Row, Image } from 'react-bootstrap'
+import {GoogleLogin} from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { setCurrentUser } from '../redux/actions/setCurrentUser'
 import { setShowLogin } from '../redux/actions/setShowLogin'
@@ -36,7 +35,7 @@ const LoginContainer = props => {
 
   const loginCall = async (newUser) => {
     var resp = await loginFetch(newUser)
-    if(resp.id == -1){
+    if(resp.id === -1){
       console.log("INVALID NAME/EMAIL LOGIN")
       return {id: -1, new: false}
     }
@@ -82,12 +81,12 @@ const LoginContainer = props => {
       id: -1
     }
     var resp = await loginCall(newUser)
-    if(resp.info == -1){
+    if(resp.info === -1){
       props.setShowLogin(false)
       alert("Invalid Login credintials")
     }
     else{
-      if(resp.info.isTrainer == 1)
+      if(resp.info.isTrainer === 1)
       {
         resp.info = await trainerFetch(resp.info.id)
         resp.info = resp.info[0]
@@ -104,6 +103,9 @@ const LoginContainer = props => {
     
         props.setSignUpForm(body)
         await getClasses(resp.info.id)
+        if(resp.info.isCertified === 0){
+          alert("It looks like you're not certified yet,\n make sure to complete your training to show up on searches!")
+        }
       }
       newUser = resp
       props.setCurrentUser(newUser)
@@ -120,13 +122,12 @@ const LoginContainer = props => {
       id: -1
     }
     var resp = await loginCall(newUser)
-    
-    if(resp.info == -1){
+    if(resp.info === -1){
       props.setShowLogin(false)
       alert("Invalid Login credintials")
     }
     else{
-      if(resp.info.isTrainer == 1)
+      if(resp.info.isTrainer === 1)
       {
         resp.info = await trainerFetch(resp.info.id)
         resp.info = resp.info[0]
@@ -142,6 +143,10 @@ const LoginContainer = props => {
         }
     
         props.setSignUpForm(body)
+        await getClasses(resp.info.id)
+        if(resp.info.isCertified === 0){
+          alert("It looks like you're not certified yet.\nMake sure to complete your training to show up on searches!")
+        }
       }
       newUser = resp
       props.setCurrentUser(newUser)

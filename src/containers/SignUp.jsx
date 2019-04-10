@@ -12,7 +12,6 @@ import Geocode from 'react-geocode'
 import map from 'lodash/map'
 import {withRouter} from 'react-router';
 
-
 const addClass = (classList) => {
   const newClassList = [
     ...classList,
@@ -44,11 +43,11 @@ const renderClassInfoContainer = (classList, classObject, setClassList) => {
     
     tempList = classList
     tempList.forEach(c => {
-      if(c.id == classObject.id){
-        if(nod == 0){
+      if(c.id === classObject.id){
+        if(nod === 0){
           tempList[c.id].name = value
         }
-        else if(nod == 1){
+        else if(nod === 1){
           tempList[c.id].description = value
         }
       }
@@ -214,7 +213,7 @@ const SignUpContainer = props => {
     await props.setCurrentUser(usr)
     loadInstInfo(body)    
 
-    if(props.login.currentUser.info.isTrainer == 0){
+    if(props.login.currentUser.info.isTrainer === 0){
       await fetch("http://localhost:3001/users/update/" + usr.info.id, {
         method: "put",
         headers: {'Content-Type': 'application/json'}
@@ -225,7 +224,7 @@ const SignUpContainer = props => {
 
       props.history.push("/training")
     }
-    else if(props.login.currentUser.info.isTrainer == 1){
+    else if(props.login.currentUser.info.isTrainer === 1){
       props.setEditProfile(false)
 
       alert("Changes saved")
@@ -234,7 +233,7 @@ const SignUpContainer = props => {
 
   const determineState = () => {
     if(props.login.currentUser) {
-      if(props.login.currentUser.info.isTrainer == 1) {
+      if(props.login.currentUser.info.isTrainer === 1) {
         return (
           <div style={{textAlign: "center"}}>
             <div className="App-header" style={{padding: "10px"}}>
@@ -260,11 +259,11 @@ const SignUpContainer = props => {
           </div>
         )
       }
-      else if(props.login.currentUser.info.isTrainer == 0) {
-        if(props.login.editProfile == false){
+      else if(props.login.currentUser.info.isTrainer === 0) {
+        if(props.login.editProfile === false){
           props.setEditProfile(true)
         }        
-        return (<div className="App-header" style={{padding: "10px"}}>Become Trainer</div>)
+        return (<div className="App-header" style={{padding: "10px"}}>Become a Trainer</div>)
       }
     }
     else{
@@ -279,7 +278,7 @@ const SignUpContainer = props => {
           bsStyle="primary" 
           onClick={async ()=>{return await handleSubmit()}}
         >          
-          {props.login.currentUser.info.isTrainer == 0 ? <div>Register</div> : <div>Update</div>}
+          {props.login.currentUser.info.isTrainer === 0 ? <div>Register</div> : <div>Update</div>}
         </Button>
       )
     }

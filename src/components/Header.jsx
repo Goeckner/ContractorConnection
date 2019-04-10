@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavDropdown, MenuItem, Navbar, Nav, Modal } from 'react-bootstrap'
+import { NavDropdown, Navbar, Nav, Modal } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import LoginContainer from '../containers/Login.jsx'
@@ -9,7 +9,6 @@ import { setInstructorList } from '../redux/actions/fetchinstructors'
 import { setShowLogin } from '../redux/actions/setShowLogin'
 import { setCurrentUser } from '../redux/actions/setCurrentUser'
 import {setShowNewModal} from '../redux/actions/setShowNewModal'
-import fetch from 'node-fetch'
 
 const Header = props => {
 
