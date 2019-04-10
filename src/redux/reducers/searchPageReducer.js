@@ -109,6 +109,16 @@ export const instructorList = (state = [], action) => {
         return state
     }
   }
+
+  export const classes = (state = null, action) =>
+  {
+    switch (action.type) {
+      case 'SET_CLASS_LIST':
+        return action.payload
+      default:
+        return state
+    }
+  }
   
   export default combineReducers({
     instructorList,
@@ -119,5 +129,6 @@ export const instructorList = (state = [], action) => {
     tempFilter,
     activeFilter,
     showInstructor,
-    selectedInstructor
+    selectedInstructor,
+    classes
   })

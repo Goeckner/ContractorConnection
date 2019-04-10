@@ -3,10 +3,39 @@ import { connect } from 'react-redux'
 import {FormGroup, FormControl, ButtonToolbar, Row, Button, Image, Col} from 'react-bootstrap'
 import Rating from 'react-rating'
 import {setShowInstructor} from '../../redux/actions/setShowInstructor'
+import {setClassList} from '../../redux/actions/setClassList'
+import map from 'lodash.map'
+
 
 const InstructorModal = props => {
+
+    const setClassList = () => {
+        fetch(`http://localhost:3001/classes/${props.instructor.id}`, {
+                method: 'get',
+                headers: { 'Content-Type': 'application/json' },
+            })
+                .then(res => res.json())
+                .then(json => props.setClassList(json));
+    }
+
+    const courseList = classes => {
+        return (
+            map(classes, course => {
+                return (
+                    <div>
+                        <div>
+                            {course.className}
+                        </div>
+                        <textarea readOnly="true" style={{width: "100%", height: "10em", overflow: "scroll"}} value={course.classDesc} />
+                    </div>
+                )
+            })
+        )
+    }
+
     return (
         <div>
+            {props.classes ? null : setClassList()}
             <Row>
                 <Col xs={12} md={10} className = "instructor-profile-picture">
                     {props.instructor.profilePicURL ? 
@@ -42,11 +71,8 @@ const InstructorModal = props => {
                             Address:
                         </div>
                         <br></br>
-                        <div>
-                            About Me:
-                        </div>
                     </Col>
-                    <Col xs={7} md={6}>
+                    <Col xs={8} md={8}>
                         <div>
                             {props.instructor.company}
                         </div>
@@ -57,12 +83,20 @@ const InstructorModal = props => {
                             {props.instructor.address}
                             <div>{props.instructor.city}, {props.instructor.state}</div>
                         </div>
-                        <div>
-                            {props.instructor.fullDesc}
-                        </div>
                     </Col>
+                    <div>
+                        About Me:
+                    </div>
+                    <textarea readOnly="true" style={{width: "100%", height: "10em", overflow: "scroll"}}>
+                        {props.instructor.fullDesc}
+                    </textarea>
                 </Col>
                 <Col xs={7} md={6}>
+                    <div>
+                        Courses:
+                    </div>
+                    <br />
+                    { props.classes ? courseList(props.classes) : null}
                 </Col>
             </Row>
             
@@ -75,7 +109,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setShowInstructor: showi => dispatch(setShowInstructor(showi))
+    setShowInstructor: showi => dispatch(setShowInstructor(showi)),
+    setClassList: classes => dispatch(setClassList(classes))
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

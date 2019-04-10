@@ -46,7 +46,6 @@ const Header = props => {
           </Nav>
           <Nav pullRight>
             <Navbar.Brand>
-              {console.log(props.login.currentUser)}
               {!props.login.currentUser ?
               <div>
                   <div 
