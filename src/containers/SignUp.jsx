@@ -183,7 +183,7 @@ const SignUpContainer = props => {
 
     var body = {
       address: info.address,
-      isCertified: 0,
+      isCertified: info.isCertified,
       fullDesc: info.fullDesc,
       company: info.company,
       phone: info.phone,
@@ -194,9 +194,9 @@ const SignUpContainer = props => {
       longitude: coors.longitude,
       shortDesc: "NULL",
       trainerID: props.login.currentUser.info.id,
-      rating: 0,
-      numRatings: 0,
-      quizes: 0
+      rating: info.rating,
+      numRatings: info.numRatings,
+      quizes: info.quizes
     }
 
     await refreshInst(body)
