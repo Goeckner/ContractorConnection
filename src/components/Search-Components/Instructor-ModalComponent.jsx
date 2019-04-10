@@ -26,7 +26,7 @@ const InstructorModal = props => {
                         <div>
                             {course.className}
                         </div>
-                        <textarea readOnly="true" style={{width: "100%", height: "10em", overflow: "scroll"}} value={course.classDesc} />
+                        <textarea readOnly style={{width: "100%", height: "10em", overflow: "scroll"}} value={course.classDesc} />
                     </div>
                 )
             })
@@ -87,9 +87,7 @@ const InstructorModal = props => {
                     <div>
                         About Me:
                     </div>
-                    <textarea readOnly="true" style={{width: "100%", height: "10em", overflow: "scroll"}}>
-                        {props.instructor.fullDesc}
-                    </textarea>
+                    <textarea readOnly style={{width: "100%", height: "10em", overflow: "scroll"}} value={props.instructor.fullDesc} />
                 </Col>
                 <Col xs={7} md={6}>
                     <div>
