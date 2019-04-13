@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Button } from 'react-bootstrap';
 import {setQuizNum} from '../../redux/actions/setQuizNum'
 import {setQuestionNum} from '../../redux/actions/setQuestionNum'
 import {setAnswerCorrect} from '../../redux/actions/setAnswerCorrect'

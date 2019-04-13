@@ -1,17 +1,14 @@
 import { combineReducers } from 'redux'
 
 
-
-const user = [
-  {
-    quizNum: 0, 
-    questionNum: 0,
-    answerCorrect: 0
-  }
-]
+const user = {
+  quizNum: 0,
+  questionNum: 0,
+  answerCorrect: 0
+}
 
 
-export const quizNum = (state = 0, action) =>
+export const quizNum = (state = user.quizNum, action) =>
   {
     switch (action.type) {
       case 'SET_QUIZ_NUM':
@@ -21,7 +18,7 @@ export const quizNum = (state = 0, action) =>
     }
   }
 
-  export const questionNum = (state = 0, action) =>
+  export const questionNum = (state = user.questionNum, action) =>
   {
     switch (action.type) {
       case 'SET_QUESTION_NUM':
@@ -31,7 +28,7 @@ export const quizNum = (state = 0, action) =>
     }
   }
 
-  export const answerCorrect = (state = 0, action) =>
+  export const answerCorrect = (state = user.answerCorrect, action) =>
   {
     switch (action.type) {
       case 'SET_ANSWER_CORRECT':
