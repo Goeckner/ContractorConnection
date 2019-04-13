@@ -32,6 +32,7 @@ const InstructorSummary = props =>
                 <Col xs = {5}>
                     <div>
                         <Rating
+                            fractions = "4"
                             readonly
                             quiet
                             emptySymbol="glyphicon glyphicon-star-empty"                            
