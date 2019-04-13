@@ -7,8 +7,8 @@ const Quiz = props => {
 
     return (
         <div>
-            <Question quizNum={props.quizNum} questionNum={props.questionNum} />
-            <AnswerList quizNum={props.quizNum} questionNum={props.questionNum} />
+            <Question />
+            <AnswerList />
         </div>
     )
 }

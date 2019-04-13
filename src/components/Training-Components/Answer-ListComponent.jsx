@@ -9,9 +9,8 @@ const AnswerList = props => {
         i++;
         return <AnswerItem 
                     key={i}
-                    answer={answer} 
-                    quizNum={props.quizNum} 
-                    questionNum={props.questionNum} />
+                    answer={answer}
+                />
     });
 
         return (

@@ -4,7 +4,7 @@ import { ProgressBar } from 'react-bootstrap'
 import Video from '../components/Training-Components/Video-Component'
 import Quiz from '../components/Training-Components/Quiz-Component'
 import {Redirect} from 'react-router-dom'
-//import { setQuizNum } from '../redux/actions/setQuizNum'
+import { setQuizNum } from '../redux/actions/setQuizNum'
 
 
 const TrainingContainer = props => {
@@ -25,11 +25,11 @@ const TrainingContainer = props => {
 
   const handleChange = () => {
 
-    if (props.login.currentUser) {
-      if (props.login.currentUser.info.isTrainer === 1) {
-        console.log(props.trainingPage)
+    //if (props.login.currentUser) {
+      //if (props.login.currentUser.info.isTrainer === 1) {
+        console.log(props.login.currentUser)
         if (props.login.currentUser.info.quizes <= props.trainingPage.quizNum) {
-          props.login.currentUser.info.quizes = props.trainingPage.quizNum 
+          props.login.currentUser.info.quizes = props.trainingPage.quizNum
         //if (props.login.currentUser.info.quizes > 3)
         //  props.login.currentUser.info.isCertified = 1
 
@@ -41,17 +41,17 @@ const TrainingContainer = props => {
         updateTrainer(body)
       }
 
-      } else {
-        return (<Redirect to="/" />)
-      }
+      //} else {
+        //return (<Redirect to="/" />)
+      //}
     }
-  }
+  
 
   if (props.trainingPage.quizNum > 3) {
     return ( 
     <div class='completed_training'>
+      {handleChange()}
       <div>
-        {handleChange()}
         <h1>
           Diversity Training Complete!
         </h1>
@@ -62,10 +62,12 @@ const TrainingContainer = props => {
     </div>
     )
   }
+  
   return (
     <div class='root'>
-    {props.login.currentUser && props.login.currentUser.isTrainer === 1 ?
+    {props.login.currentUser && props.login.currentUser.info.isTrainer === 1 ?
       <div>
+        {props.setQuizNum(props.login.currentUser.info.quizes)}
         <div class='info'>
           <h1>Diversity Training</h1>
           <h4>This training consists of 4 quizzes with 5 questions each. </h4>
@@ -75,16 +77,22 @@ const TrainingContainer = props => {
         </div>
         <div class='row'>
           <div class='col'>
-            <Video class='video' quizNum={props.trainingPage.quizNum} />
+            <Video class='video' />
           </div>
           <div class='col2'>
-            <Quiz class='quiz' quizNum={props.trainingPage.quizNum} questionNum={props.questionNum} />
+            <Quiz class='quiz' />
           </div>
         </div>
         <div className="training_bar" OnChange={handleChange()}>Quizzes Completed: <ProgressBar now={props.trainingPage.quizNum * 25} label={`${props.trainingPage.quizNum} / 4`} /></div>
       </div>
       :
-      <Redirect to="/" />
+      <div class='completed_training'>
+      <div>
+        <h2>
+          Log in as a Trainer to access Training
+        </h2>
+      </div>
+    </div>
       }
     </div>
   )
@@ -95,6 +103,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+  setQuizNum: num => dispatch(setQuizNum(num)),
 })
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps)

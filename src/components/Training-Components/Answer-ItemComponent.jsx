@@ -7,15 +7,30 @@ import quizData from '../../questions'
 
 const AnswerItem = props => {
 
-    const handleClick = (answer) => {
-        //increments answerCorrect if answer selected is correct
+    const updateQuiz = () => {
+        if (props.questionNum == 4 && props.answerCorrect > 3) {
+            props.setQuizNum(props.quizNum + 1)
+        }
+    }
+
+    const updateAnswerCorrect = answer => {
         if (answer == quizData[props.quizNum].answers[props.questionNum][quizData[props.quizNum].correct[props.questionNum]]) {
             props.setAnswerCorrect(props.answerCorrect + 1)
         }
+    }
+    const handleClick = (answer) => {
+        //increments answerCorrect if answer selected is correct
+        // if (answer == quizData[props.quizNum].answers[props.questionNum][quizData[props.quizNum].correct[props.questionNum]]) {
+        //     console.log(props.answerCorrect)
+        //     props.setAnswerCorrect(props.answerCorrect + 1)
+        // }
+        updateAnswerCorrect(answer)
+        updateQuiz()
         //increments quizNum after last question answered and passed quiz
-        if (props.questionNum == 4 && props.answerCorrect > 3) { 
-            props.setQuizNum(props.quizNum + 1)
-        }
+        // if (props.questionNum == 4 && props.answerCorrect > 3) {
+        //     props.setQuizNum(props.quizNum + 1)
+        //     console.log(props.quizNum)
+        // }
         //increments questionNum, resets questionNum to zero after last question
         if (props.questionNum < 4) { 
             props.setQuestionNum(props.questionNum + 1)
