@@ -180,10 +180,25 @@ const SignUpContainer = props => {
   const handleSubmit = async () => {
     var info = pullInfo()
     var coors = await getCoor(info.address, info.city, info.state)
-
+    if(props.login.currentUser.info.isTrainer == 0){
+      var stuff = {
+        cert: 0,
+        rate: 0,
+        numrate: 0,
+        quizes: 0
+      }
+    }
+    else if(props.login.currentUser.info.isTrainer == 1){
+      var stuff = {
+        cert: props.login.currentUser.info.isCertified,
+        rate: props.login.currentUser.info.rating,
+        numrate: props.login.currentUser.info.numRatings,
+        quizes: props.login.currentUser.info.quizes
+      }
+    }
     var body = {
       address: info.address,
-      isCertified: info.isCertified,
+      isCertified: stuff.cert,
       fullDesc: info.fullDesc,
       company: info.company,
       phone: info.phone,
@@ -194,9 +209,9 @@ const SignUpContainer = props => {
       longitude: coors.longitude,
       shortDesc: "NULL",
       trainerID: props.login.currentUser.info.id,
-      rating: info.rating,
-      numRatings: info.numRatings,
-      quizes: info.quizes
+      rating: stuff.rate,
+      numRatings: stuff.numrate,
+      quizes: stuff.quizes
     }
 
     await refreshInst(body)

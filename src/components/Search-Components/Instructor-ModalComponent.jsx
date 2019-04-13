@@ -22,7 +22,7 @@ const InstructorModal = props => {
         return (
             map(classes, course => {
                 return (
-                    <div>
+                    <div key={course.className}>
                         <div>
                             {course.className}
                         </div>
