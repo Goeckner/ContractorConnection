@@ -64,22 +64,28 @@ const TrainingContainer = props => {
   }
   return (
     <div class='root'>
-      <div class='info'>
-        <h1>Diversity Training</h1>
-        <h4>This training consists of 4 quizzes with 5 questions each. </h4>
-        <h4>Click on an answer to move onto the next question. </h4>
-        <h4>If you do not get at least 4 questions correct, the 
-        quiz will restart. Good Luck.</h4>
-      </div>
-      <div class='row'>
-        <div class='col'>
-          <Video class='video' quizNum={props.trainingPage.quizNum} />
+    {props.login.currentUser && props.login.currentUser.isTrainer === 1 ?
+      <div>
+        <div class='info'>
+          <h1>Diversity Training</h1>
+          <h4>This training consists of 4 quizzes with 5 questions each. </h4>
+          <h4>Click on an answer to move onto the next question. </h4>
+          <h4>If you do not get at least 4 questions correct, the 
+          quiz will restart. Good Luck.</h4>
         </div>
-        <div class='col2'>
-          <Quiz class='quiz' quizNum={props.trainingPage.quizNum} questionNum={props.questionNum} />
+        <div class='row'>
+          <div class='col'>
+            <Video class='video' quizNum={props.trainingPage.quizNum} />
+          </div>
+          <div class='col2'>
+            <Quiz class='quiz' quizNum={props.trainingPage.quizNum} questionNum={props.questionNum} />
+          </div>
         </div>
+        <div className="training_bar" OnChange={handleChange()}>Quizzes Completed: <ProgressBar now={props.trainingPage.quizNum * 25} label={`${props.trainingPage.quizNum} / 4`} /></div>
       </div>
-      <div className="training_bar" OnChange={handleChange()}>Quizzes Completed: <ProgressBar now={props.trainingPage.quizNum * 25} label={`${props.trainingPage.quizNum} / 4`} /></div>
+      :
+      <Redirect to="/" />
+      }
     </div>
   )
 }
