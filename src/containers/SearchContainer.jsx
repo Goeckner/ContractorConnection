@@ -15,12 +15,11 @@ class SearchContainer extends Component {
 	}
 
 	componentDidMount() {
-		//if(this.props.instructorList === undefined || this.props.instructorList.length === 0){
-			fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
-				.then(res => res.json())
-				.then(json => this.props.setInstructorList(json));
-		//}
+		fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
+			.then(res => res.json())
+			.then(json => this.props.setInstructorList(json));
 	}
+	
 	render() {
 		return (
 			<Grid className="instructor-search-container" >
