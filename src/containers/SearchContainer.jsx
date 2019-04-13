@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Grid,Col,Row } from 'react-bootstrap';
 import SearchBar from '../components/Search-Components/Search-BarComponent'
@@ -9,47 +9,53 @@ import {setCoordinates} from '../redux/actions/setCoordinates'
 import {setInstructorList} from '../redux/actions/fetchinstructors'
 import fetch from 'node-fetch'
 
-const SearchContainer = props => {
-	
-	if(props.instructorList === undefined || props.instructorList.length === 0){
-		fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
-		  	.then(res => res.json())
-		  	.then(json => props.setInstructorList(json));
+class SearchContainer extends Component {
+	constructor(props) {
+		super(props)
 	}
 
-	return (
-		<Grid className="instructor-search-container" >
+	componentDidMount() {
+		//if(this.props.instructorList === undefined || this.props.instructorList.length === 0){
+			fetch("http://localhost:3001/trainers", {'Content-Type': 'application/json'})
+				.then(res => res.json())
+				.then(json => this.props.setInstructorList(json));
+		//}
+	}
+	render() {
+		return (
+			<Grid className="instructor-search-container" >
 
-			<Row className="search-utils" >
+				<Row className="search-utils" >
 
-				<Col md = {6}>
-					<SearchBar />
-				</Col>
-				
+					<Col md = {6}>
+						<SearchBar />
+					</Col>
+					
 
-				<Col md={6} className="map-filter">
-					<SearchFilter />
-				</Col>
-				
-			</Row >
+					<Col md={6} className="map-filter">
+						<SearchFilter />
+					</Col>
+					
+				</Row >
 
-			<Row className="results-container" >
+				<Row className="results-container" >
 
-				<Col md={6} className="results-list-container" >
-					<InstructorsList />
-				</Col >
+					<Col md={6} className="results-list-container" >
+						<InstructorsList />
+					</Col >
 
-				<Col md={6} className="results-map-container" >
-					<MapContainer 
-						center = {props.Coordinates.center}
-						zoom = {props.Coordinates.zoom}
-					/>
-				</Col >
+					<Col md={6} className="results-map-container" >
+						<MapContainer 
+							center = {this.props.Coordinates.center}
+							zoom = {this.props.Coordinates.zoom}
+						/>
+					</Col >
 
-			</Row >
+				</Row >
 
-		</Grid >
-	)
+			</Grid >
+		)
+	}
 }
 
 const mapStateToProps = state => ({
