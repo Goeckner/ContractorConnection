@@ -16,8 +16,13 @@ const Marker = props => {
         props.args.setShowInstructor(true)
     }
 
+    const handleHover = () => {
+        props.args.setMapAddress(props.instructor.address)
+        props.args.setCoordinates({center:{lat: parseFloat(props.instructor.latitude), lng: parseFloat(props.instructor.longitude)}, zoom: 15})
+    }
+
     return (
-        <div onClick = {() => {handleClick()}}
+        <div onClick = {() => {handleClick()}} onMouseOver = {() => handleHover()}
              className="google-maps-marker"
         >
             <div className="marker-top">
