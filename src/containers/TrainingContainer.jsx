@@ -20,6 +20,15 @@ const TrainingContainer = props => {
     })
         .then(res => res.json())
 
+    if (body.quizes > 3 && props.login.currentUser.info.isCertified === 0) {
+      url += body.id
+
+      await fetch(url, {
+        method: 'put',
+        headers: {'Content-Type': 'application/json'}
+      })
+          .then(res => res.json())
+    }
   }
     
 
