@@ -255,20 +255,14 @@ const SignUpContainer = props => {
               Account Information
             </div>
             <FormGroup>
-              <ControlLabel style={{padding: "5px"}}>Edit Information?</ControlLabel>
-              <div>
-                <Radio
-                  name="radioGroup"
-                  inline onClick={() => {props.setEditProfile(true)}}
+              <div style={{padding: "10px"}}>
+                <Button
+                  bsSize="large"
+                  style={{color: "gray"}}
+                  onClick={()=>{props.setEditProfile(!props.login.editProfile)}}
                 >
-                  Yes
-                </Radio>
-                <Radio
-                  name="radioGroup"
-                  inline onClick={() => {props.setEditProfile(false)}}
-                >
-                  No
-                </Radio>
+                  {props.login.editProfile ? <div>Exit Edit</div> : <div>Edit Information</div>}
+                </Button>
               </div>
             </FormGroup>
           </div>

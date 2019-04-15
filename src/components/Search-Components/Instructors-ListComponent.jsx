@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Table, Modal } from 'react-bootstrap'
+import { Table, Modal, Button } from 'react-bootstrap'
 import InstructorSummary from './Instructor-SummaryComponent'
 import getFilteredInstructorList from '../../redux/selectors/getFilteredInstructorList'
 import InstructorModal from './Instructor-ModalComponent'
@@ -51,11 +51,13 @@ const InstructorsList = props =>
     return (
         <div className="instructors-list-div">
         {(props.activeFilter.rating && props.activeFilter.rating != 0) || (props.activeFilter.distance && props.activeFilter.distance != "No Max") ?
-        <button
+        <Button
+            style={{margin: "0px 0px 8px 0px", color: "white", width: "100%", fontSize: "18px"}}
+            bsStyle="primary"
             onClick={() => 
                 resetFilters()
             }
-        >clear filters</button>
+        >Clear Filters</Button>
         : null
         }
             <Table hover className="instructors-list">
