@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import {FormGroup, FormControl, ButtonToolbar, Row, Button, Image, Col} from 'react-bootstrap'
+import {FormGroup, FormControl, ButtonGroup, Row, Button, Image, Col} from 'react-bootstrap'
 import Rating from 'react-rating'
 import {setShowInstructor} from '../../redux/actions/setShowInstructor'
 import {setClassList} from '../../redux/actions/setClassList'
@@ -46,6 +46,7 @@ const InstructorModal = props => {
             body: JSON.stringify(body)
         })
     }
+    var rate = 0
 
     return (
         <div>
@@ -57,9 +58,18 @@ const InstructorModal = props => {
                         emptySymbol="glyphicon glyphicon-star-empty"                            
                         fullSymbol="glyphicon glyphicon-star"
                         className = "filter-modal"
-                        onClick = {rating => rateInstructor(rating)}
+                        onClick = {rating => rate = rating}
                         initialRating = {props.instructor.rating} 
                     />
+                    <ButtonGroup className = "filter-regular">
+                        <Button 
+                            onClick = {(e) => {rateInstructor(rate)
+                                        e.target.disabled = "true"}} 
+                            style={{left: "-7px", padding: "10px", color: "gray", fontSize: "16px"}}
+                        >
+                            Rate
+                        </Button>
+                    </ButtonGroup>
                     {props.instructor.profilePicURL ? 
                         <Image width = {150}
                             height = {150}
