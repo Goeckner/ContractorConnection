@@ -179,6 +179,13 @@ const SignUpContainer = props => {
 
   const handleSubmit = async () => {
     var info = pullInfo()
+    for(var i in info){
+      if(info[i] === undefined || info[i] === null || info[i] === "")
+      {
+        alert("Make sure to fill out each text box!")
+        return
+      }
+    }
     var coors = await getCoor(info.address, info.city, info.state)
     if(props.login.currentUser.info.isTrainer == 0){
       var stuff = {

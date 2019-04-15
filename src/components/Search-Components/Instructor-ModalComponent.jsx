@@ -43,7 +43,7 @@ const InstructorModal = props => {
         fetch('http://localhost:3001/trainers/rating', {
             method: 'post',
             headers: { 'Content-Type': 'application/json' },
-            body
+            body: JSON.stringify(body)
         })
     }
 
