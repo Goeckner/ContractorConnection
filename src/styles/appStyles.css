@@ -3,3 +3,7 @@
 @import url("searchPage.css");
 @import url("trainingPage.css");
 @import url("loginStyles.css");
+
+body{
+    overflow-x:hidden;
+}
