@@ -16,9 +16,14 @@ const InstructorSummary = props =>
         props.setShowInstructor(true)
     }
 
+    const handleHover = () => {
+        props.setMapAddress(props.instructor.address)
+        props.setCoordinates({center:{lat: parseFloat(props.instructor.latitude), lng: parseFloat(props.instructor.longitude)}, zoom: 15})
+    }
+
     return (
         <tr >
-            <td onClick={()=>{handleClick()}}>
+            <td onClick={()=>{handleClick()}} onMouseOver={()=>{handleHover()}}>
                 <Col xs={7}>
                     <strong>
                         <a>
