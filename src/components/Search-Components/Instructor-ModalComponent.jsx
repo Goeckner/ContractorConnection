@@ -33,11 +33,33 @@ const InstructorModal = props => {
         )
     }
 
+    const rateInstructor = rating => {
+
+        const body = {
+            id: props.instructor.id,
+            rate: rating
+        }
+
+        fetch('http://localhost:3001/trainers/rating', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body
+        })
+    }
+
     return (
         <div>
             {props.classes ? null : setClassList()}
             <Row>
                 <Col xs={12} md={10} className = "instructor-profile-picture">
+                    Rate this instructor:
+                    <Rating
+                        emptySymbol="glyphicon glyphicon-star-empty"                            
+                        fullSymbol="glyphicon glyphicon-star"
+                        className = "filter-modal"
+                        onClick = {rating => rateInstructor(rating)}
+                        initialRating = {props.instructor.rating} 
+                    />
                     {props.instructor.profilePicURL ? 
                         <Image width = {150}
                             height = {150}

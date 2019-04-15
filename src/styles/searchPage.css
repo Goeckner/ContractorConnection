@@ -23,6 +23,11 @@
   margin:1px;
 }
 
+.filter-modal {
+  font-size: 20px;
+  margin:1px;
+}
+
 .instructors-list-div {
   height: 780px;
   overflow-y: auto;
@@ -67,4 +72,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
